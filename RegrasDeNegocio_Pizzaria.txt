@@ -1,0 +1,44 @@
+Regras de negócio
+RN01- Recepção do cliente
+Descrição: O Recepcionista é responsável de levar o cliente até uma mesa.
+RN relacionadas:
+
+RN02- Pedido vinculado a mesa
+Descrição: Todo pedido deve estar vinculado a uma mesa.
+RN relacionadas:
+
+RN03- Proibido comanda vazia
+Descrição: Pedidos não podem ser finalizados se a comanda estiver vazia.
+RN relacionadas:
+
+RN04- Novos itens e categorias
+Descrição: Apenas funcionários da gestão podem adicionar novos itens e categorias.
+RN relacionadas:
+
+RN05- Venda de alcool somente 18+
+Descrição: Apenas clientes maiores de 18 anos estão permitidos a comprar bebida alcoólica.
+RN relacionadas:
+
+RN06- Pedidos restritos ao cardápio
+Descrição: O cliente só pode pedir itens que estejam no cardápio.   
+RN relacionadas:
+
+RN07- Proibida saída sem pagamento
+Descrição: O cliente não pode deixar o estabelecimento sem pagar.
+RN relacionadas:
+
+RN08- Produto precisa ter os dados completos
+Descrição: Todo produto precisa ter categoria, nome, descrição e preço.
+RN relacionadas:
+
+RN09- Comanda vinculada a funcionário
+Descrição: Uma comanda precisa estar vinculada a um funcionário.
+RN relacionadas:
+
+RN10- Funcionários precisam estar cadastrados
+Descrição: Todo funcionário precisa estar cadastrado para ter acesso ao software.
+RN relacionadas:
+
+-------------------
+
+
