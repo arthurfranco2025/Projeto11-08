@@ -40,5 +40,52 @@ Descrição: Todo funcionário precisa estar cadastrado para ter acesso ao softw
 RN relacionadas:
 
 -------------------
+Requisitos Funcionais
 
+RF01- Cadastrar Produto
+Descrição: Cria um produto com nome, descrição, categoria e preço.
+RN relacionadas:
 
+RF02- Consultar Produtos
+Descrição: Ver os produtos cadastrados por categoria.
+RN relacionadas:
+
+RF03- Cadastrar Categoria
+Descrição: Cria uma categoria de produtos.
+RN relacionadas:
+
+RF04- Consultar Categorias
+Descrição: Ver as categorias cadastradas.
+RN relacionadas:
+
+RF05- Criar Mesa
+Descrição: Cria uma mesa para registrar o pedido do cliente na comanda.
+RN relacionadas:
+
+RF06- Editar pedido
+Descrição: Adiciona ou remove itens ao pedido do cliente na comanda.
+RN relacionadas:
+
+RF07- Enviar pedido
+Descrição: Adiciona a mesa com a comanda aos últimos pedidos.
+RN relacionadas:
+
+RF08- Concluir pedido
+Descrição: Conclui o pedido da lista.
+RN relacionadas:
+
+RF09- Atualizar pedidos
+Descrição: Atualiza a lista de pedidos para remover os já concluidos.
+RN relacionadas:
+
+RF10- Cadastrar conta
+Descrição: Cadastra uma conta.
+RN relacionadas:
+
+RF11- Login
+Descrição: Faz o login numa conta já cadastrada.
+RN relacionadas:
+
+RF12- Logout
+Descrição: Faz o logout numa conta já logada.
+RN relacionadas:
