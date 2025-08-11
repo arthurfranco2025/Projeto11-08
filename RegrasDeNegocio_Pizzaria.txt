@@ -89,3 +89,36 @@ RN relacionadas:
 RF12- Logout
 Descrição: Faz o logout numa conta já logada.
 RN relacionadas:
+
+-------------------------
+Requisitos não funcionais
+
+RNF01- Autenticação
+Descrição: Realiza a autenticação dos funcionários.
+RN relacionadas:  RN10
+RF relacionados: RF10, RF11
+RNF relacionados: RNF01
+
+RNF02- Conectividade
+Descrição: Acesso a internet.
+RN relacionadas: RF01, RF02, RF03, RF04, RF05, RF06, RF07, RF08, RF09, RF10, RF11, RF12
+RF relacionados:
+RNF relacionados:
+
+RNF03- Codificação de senhas
+Descrição: Criptografia de senhas de funcionários.
+RN relacionadas: RN10 
+RF relacionados: RF10, RF11
+RNF relacionados: RNF01
+
+RNF04- Compatibilidade
+Descrição: Compatibilidade com Android, IOS, Windows, Linux e macOS.
+RN relacionadas:
+RF relacionados:
+RNF relacionados:
+
+RNF05- Interface amigável
+Descrição: Interface intuitiva e fácil de utilizar
+RN relacionadas: 
+RF relacionados: RF01, RF02, RF03, RF04, RF05, RF06, RF07, RF08, RF09, RF10, RF11, RF12
+RNF relacionados:
