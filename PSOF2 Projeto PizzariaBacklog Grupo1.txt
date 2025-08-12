@@ -6,14 +6,30 @@ Backlog:
 - Cardápio dividido por categorias
 - Psicologia das cores
 - Login/cadastro do cliente
+
+-----------------------------------------------
+
 - Diagramação parecida com totens (Fast Food)
+
+Story: Como usuário cliente que utiliza o aplicativo da pizzaria para fazer pedidos, quero que a diagramação da interface seja semelhante à dos totens de autoatendimento de fast food, para que eu possa visualizar o cardápio de forma clara, rápida e intuitiva,
+
+-----------------------------------------------
+
 - Promoções pontos/dias
+
+Story: Como usuário cliente do aplicativo da pizzaria, quero receber promoções especiais que dependam do número de pontos que acumulei ou de dias específicos da semana/mês, para que eu tenha incentivo para fazer pedidos com mais frequência e aproveitar descontos exclusivos.
+
+------------------------------------------------
+
 - Opção de pagamento (Pix/Débito/Crédito)
+
+Story: Como usuário cliente do aplicativo da pizzaria, quero ser possibilitado de escolher entre múltiplas formas de efetuar pagamento da comanda, para que eu possa ter maior conforto e segurança no momento da finalização da compra. 
+
+-------------------------------------------------
+
 - CPF na nota
 - Pagar ou remover taxa do garçom
 - Carrinho/comanda
 - Aba favoritos
 - Avaliação do pedido
 - Notificação/vibração no telefone
-Story: Como cliente, quero receber notificações e vibrações sobre o status do meu pedido para ficar informado sem abrir o app.
-- Barra de pesquisa
