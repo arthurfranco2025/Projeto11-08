@@ -67,4 +67,13 @@ Story: Como usuário cliente do aplicativo da pizzaria, desejo conseguir visuali
 Story: Como usuário cliente do aplicativo da pizzaria, gostaria que houvesse a possibilidade de avaliar os produtos e também visualizar outras avaliações, isso garante transparência da qualidade do item.
 
 -----------------------------------------------
+
 - Notificação/vibração no telefone
+Story: 	Como cliente, quero receber notificações e vibrações sobre o status do meu pedido para ficar informado sem abrir o app.
+
+-----------------------------------------------
+
+- Barra de pesquisa
+Story: 	Como cliente, quero pesquisar itens no cardápio para encontrar rapidamente o que desejo.
+
+-----------------------------------------------
