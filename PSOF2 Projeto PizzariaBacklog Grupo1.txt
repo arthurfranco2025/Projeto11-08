@@ -1,0 +1,18 @@
+PSOF2 Projeto Pizzaria
+Aplicação Mobile
+Grupo 1
+Backlog:
+
+- Cardápio dividido por categorias
+- Psicologia das cores
+- Login/cadastro do cliente
+- Diagramação parecida com totens (Fast Food)
+- Promoções pontos/dias
+- Opção de pagamento (Pix/Débito/Crédito)
+- CPF na nota
+- Pagar ou remover taxa do garçom
+- Carrinho/comanda
+- Aba favoritos
+- Avaliação do pedido
+- Notificação/vibração no telefone
+- Barra de pesquisa
