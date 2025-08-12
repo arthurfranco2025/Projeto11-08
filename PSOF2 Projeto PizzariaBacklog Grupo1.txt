@@ -33,4 +33,3 @@ Story: Como usuário cliente do aplicativo da pizzaria, quero ser possibilitado 
 - Aba favoritos
 - Avaliação do pedido
 - Notificação/vibração no telefone
-- Barra de pesquisa
