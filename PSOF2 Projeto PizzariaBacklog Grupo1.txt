@@ -4,14 +4,26 @@ Grupo 1
 Backlog:
 
 - Cardápio dividido por categorias
+
+Story: Como cliente da pizzaria, eu quero uma boa organização no aplicativo, para que eu não me confunda quando fizer um pedido.
+
+----------------------------------------------
+
 - Psicologia das cores
+
+Story: Como cliente da pizzaria, eu quero uma interface com cores atrativas, para que a experiência seja agradável ao uso.
+
+----------------------------------------------
+
 - Login/cadastro do cliente
+
+Story: Como cliente da pizzaria, eu quero que o aplicativo forneça login, para que seja possível guardar informações sobre meu pedido e possa acumular pontos em promoções futuras.
 
 -----------------------------------------------
 
 - Diagramação parecida com totens (Fast Food)
 
-Story: Como usuário cliente que utiliza o aplicativo da pizzaria para fazer pedidos, quero que a diagramação da interface seja semelhante à dos totens de autoatendimento de fast food, para que eu possa visualizar o cardápio de forma clara, rápida e intuitiva,
+Story: Como usuário cliente que utiliza o aplicativo da pizzaria para fazer pedidos, quero que a diagramação da interface seja semelhante à dos totens de autoatendimento de fast food, para que eu possa visualizar o cardápio de forma clara, rápida e intuitiva.
 
 -----------------------------------------------
 
@@ -28,14 +40,29 @@ Story: Como usuário cliente do aplicativo da pizzaria, quero ser possibilitado 
 -------------------------------------------------
 
 - CPF na nota
+
+Story: Como usuário cliente, eu quero poder colocar o CPF na nota para acumular créditos em minha conta, além de agregar a fiscalização tributária contra a sonegação de impostos.
+
+-------------------------------------------------
+
 - Pagar ou remover taxa do garçom
+
+Story: Como usuário cliente, eu quero ser capaz de pagar ou não uma taxa de atendimento ao garçom, para expressar minha satisfação com o seu trabalho.
+
+-------------------------------------------------
+
 - Carrinho/comanda
 
------------------------------------------------
+Story: Como usuário cliente, eu quero ter um carrinho/comanda que guarde os itens que estou escolhendo ao fazer o pedido, para facilitar o processo da compra e poder comprar mais de um produto por vez.
+
+-------------------------------------------------
+
 - Aba favoritos
+
 Story: Como usuário cliente do aplicativo da pizzaria, desejo conseguir visualizar meus pedidos favoritos em alguma parte do app, pois isso agiliza o processo de seleção do produto.
 
 -----------------------------------------------
+
 - Avaliação do pedido
 Story: Como usuário cliente do aplicativo da pizzaria, gostaria que houvesse a possibilidade de avaliar os produtos e também visualizar outras avaliações, isso garante transparência da qualidade do item.
 
