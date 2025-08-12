@@ -11,7 +11,7 @@ Backlog:
 
 - Diagramação parecida com totens (Fast Food)
 
-Story: Como usuário cliente que utiliza o aplicativo da pizzaria para fazer pedidos, quero que a diagramação da interface seja semelhante à dos totens de autoatendimento de fast food, para que eu possa visualizar o cardápio de forma clara, rápida e intuitiva,
+Story: Como usuário cliente que utiliza o aplicativo da pizzaria para fazer pedidos, quero que a diagramação da interface seja semelhante à dos totens de autoatendimento de fast food, para que eu possa visualizar o cardápio de forma clara, rápida e intuitiva.
 
 -----------------------------------------------
 
@@ -28,8 +28,23 @@ Story: Como usuário cliente do aplicativo da pizzaria, quero ser possibilitado 
 -------------------------------------------------
 
 - CPF na nota
+
+Story: Como usuário cliente, eu quero poder colocar o CPF na nota para acumular créditos em minha conta, além de agregar a fiscalização tributária contra a sonegação de impostos.
+
+-------------------------------------------------
+
 - Pagar ou remover taxa do garçom
+
+Story: Como usuário cliente, eu quero ser capaz de pagar ou não uma taxa de atendimento ao garçom, para expressar minha satisfação com o seu trabalho.
+
+-------------------------------------------------
+
 - Carrinho/comanda
+
+Story: Como usuário cliente, eu quero ter um carrinho/comanda que guarde os itens que estou escolhendo ao fazer o pedido, para facilitar o processo da compra e poder comprar mais de um produto por vez.
+
+-------------------------------------------------
+
 - Aba favoritos
 - Avaliação do pedido
 - Notificação/vibração no telefone
