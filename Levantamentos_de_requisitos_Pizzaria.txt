@@ -1,0 +1,168 @@
+Regras de negócio
+RN01- Recepção do cliente
+Descrição: O Recepcionista é responsável de levar o cliente até uma mesa.
+RN relacionadas: 
+RNF relacionadas: 
+RF relacionadas: RF05, RF06
+
+RN02- Pedido vinculado a mesa
+Descrição: Todo pedido deve estar vinculado a uma mesa.
+RN relacionadas: 
+RNF relacionadas: 
+RF relacionadas: RF05, RF06
+
+RN03- Proibido comanda vazia
+Descrição: Pedidos não podem ser finalizados se a comanda estiver vazia.
+RN relacionadas: 
+RNF relacionadas: 
+RF relacionadas: RF07, RF08
+
+RN04- Novos itens e categorias
+Descrição: Apenas funcionários da gestão podem adicionar novos itens e categorias.
+RN relacionadas: 
+RNF relacionadas:
+RF relacionadas: RF01, RF02, RF03, RF04
+
+RN05- Venda de alcool somente 18+
+Descrição: Apenas clientes maiores de 18 anos estão permitidos a comprar bebida alcoólica.
+RN relacionadas: 
+RNF relacionadas: 
+RF relacionadas: RF06
+
+RN06- Pedidos restritos ao cardápio
+Descrição: O cliente só pode pedir itens que estejam no cardápio.   
+RN relacionadas: 
+RNF relacionadas: 
+RF relacionadas: RF06
+
+RN07- Proibida saída sem pagamento
+Descrição: O cliente não pode deixar o estabelecimento sem pagar.
+RN relacionadas:
+RNF relacionadas:
+RF relacionadas: RF08
+
+RN08- Produto precisa ter os dados completos
+Descrição: Todo produto precisa ter categoria, nome, descrição e preço.
+RN relacionadas: 
+RNF relacionadas: 
+RF relacionadas: RF01, RF02, RF03, RF04
+
+RN09- Comanda vinculada a funcionário
+Descrição: Uma comanda precisa estar vinculada a um funcionário.
+RN relacionadas: 
+RNF relacionadas: 
+RF relacionadas: RF05, RF06, RF09
+
+RN10- Funcionários precisam estar cadastrados
+Descrição: Todo funcionário precisa estar cadastrado para ter acesso ao software.
+RN relacionadas: 
+RNF relacionadas: RNF01
+RF relacionadas: RF10, RF11, RF12
+
+-------------------
+Requisitos Funcionais
+
+RF01- Cadastrar Produto
+Descrição: Cria um produto com nome, descrição, categoria e preço.
+RN relacionadas: RN04, RN08
+RNF relacionadas: RNF02
+RF relacionadas:
+
+RF02- Consultar Produtos
+Descrição: Ver os produtos cadastrados por categoria.
+RN relacionadas: RN08
+RNF relacionadas: RNF02, RNF05
+RF relacionadas: 
+
+RF03- Cadastrar Categoria
+Descrição: Cria uma categoria de produtos.
+RN relacionadas:RN04, RN08
+RNF relacionadas: RNF02, RNF05
+RF relacionadas: 
+
+RF04- Consultar Categorias
+Descrição: Ver as categorias cadastradas.
+RN relacionadas:RN08
+RNF relacionadas: RNF02, RNF05
+RF relacionadas: RF03
+
+RF05- Criar Mesa
+Descrição: Cria uma mesa para registrar o pedido do cliente na comanda.
+RN relacionadas:RN01, RN02, RN09
+RNF relacionadas: RNF02, RNF05
+RF relacionadas: 
+
+RF06- Editar pedido
+Descrição: Adiciona ou remove itens ao pedido do cliente na comanda.
+RN relacionadas: RN01, RN02, RN03, RN05, RN06, RN09
+RNF relacionadas: RNF02, RNF05
+RF relacionadas: RF05
+
+RF07- Enviar pedido
+Descrição: Adiciona a mesa com a comanda aos últimos pedidos.
+RN relacionadas:RN09
+RNF relacionadas: RNF02, RNF05
+RF relacionadas: RF05
+
+RF08- Concluir pedido
+Descrição: Conclui o pedido da lista.
+RN relacionadas:RN07
+RNF relacionadas: RNF02, RNF05
+RF relacionadas: RF07
+
+RF09- Atualizar pedidos
+Descrição: Atualiza a lista de pedidos para remover os já concluidos.
+RN relacionadas: RN09
+RNF relacionadas: RNF02, RNF05
+RF relacionadas: RF08
+
+RF10- Cadastrar conta
+Descrição: Cadastra uma conta.
+RN relacionadas:RN10
+RNF relacionadas: RNF01, RNF02, RNF05
+RF relacionadas: 
+
+RF11- Login
+Descrição: Faz o login numa conta já cadastrada.
+RN relacionadas:RN10
+RNF relacionadas: RNF01, RNF02, RNF05
+RF relacionadas: RF10
+
+RF12- Logout
+Descrição: Faz o logout numa conta já logada
+RN relacionadas:RN10
+RNF relacionadas: RNF01, RNF02, RNF05
+RF relacionadas: RF11
+
+-------------------
+Requisitos não funcionais
+
+RNF01- Autenticação
+Descrição: Realiza a autentificação dos funcionários.
+RN relacionadas:RN10
+RNF relacionadas: RNF01
+RF relacionadas: RF10, RF11
+
+RNF02- Conectividade
+Descrição: Acesso a internet.
+RN relacionadas:
+RNF relacionadas: 
+RF relacionadas: RF01, RF02, RF03, RF04, RF05, RF06, RF07, RF08, RF09, RF10, RF11, RF12
+
+RNF03- Codificação de senhas
+Descrição: Criptografia de senhas de funcionários.
+RN relacionadas:RN10
+RNF relacionadas: RNF01
+RF relacionadas: RF10, RF11
+
+RNF04- Compatibilidade
+Descrição: Compatibilidade com Android, IOS, Windows, Linux e macOS.
+RN relacionadas:
+RNF relacionadas: 
+RF relacionadas: 
+
+RNF05- Interface amigável
+Descrição: Interface intuitiva e fácil de utilizar
+RN relacionadas:
+RNF relacionadas: RNF02
+RF relacionadas: RF01, RF02, RF03, RF04, RF05, RF06, RF07, RF08, RF09, RF10, RF11, RF12
