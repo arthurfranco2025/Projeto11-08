@@ -15,4 +15,5 @@ Backlog:
 - Aba favoritos
 - Avaliação do pedido
 - Notificação/vibração no telefone
+Story: Como cliente, quero receber notificações e vibrações sobre o status do meu pedido para ficar informado sem abrir o app.
 - Barra de pesquisa
