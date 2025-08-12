@@ -30,6 +30,14 @@ Story: Como usuário cliente do aplicativo da pizzaria, quero ser possibilitado 
 - CPF na nota
 - Pagar ou remover taxa do garçom
 - Carrinho/comanda
+
+-----------------------------------------------
 - Aba favoritos
+Story: Como usuário cliente do aplicativo da pizzaria, desejo conseguir visualizar meus pedidos favoritos em alguma parte do app, pois isso agiliza o processo de seleção do produto.
+
+-----------------------------------------------
 - Avaliação do pedido
+Story: Como usuário cliente do aplicativo da pizzaria, gostaria que houvesse a possibilidade de avaliar os produtos e também visualizar outras avaliações, isso garante transparência da qualidade do item.
+
+-----------------------------------------------
 - Notificação/vibração no telefone
