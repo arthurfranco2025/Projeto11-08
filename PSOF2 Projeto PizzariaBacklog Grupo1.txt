@@ -4,8 +4,20 @@ Grupo 1
 Backlog:
 
 - Cardápio dividido por categorias
+
+Story: Como cliente da pizzaria, eu quero uma boa organização no aplicativo, para que eu não me confunda quando fizer um pedido.
+
+----------------------------------------------
+
 - Psicologia das cores
+
+Story: Como cliente da pizzaria, eu quero uma interface com cores atrativas, para que a experiência seja agradável ao uso.
+
+----------------------------------------------
+
 - Login/cadastro do cliente
+
+Story: Como cliente da pizzaria, eu quero que o aplicativo forneça login, para que seja possível guardar informações sobre meu pedido e possa acumular pontos em promoções futuras.
 
 -----------------------------------------------
 
