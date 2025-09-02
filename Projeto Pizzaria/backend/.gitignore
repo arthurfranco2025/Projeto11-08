@@ -1,5 +1,8 @@
-./.env
+# Ignorar variáveis de ambiente
 .env
 env
+./.env
+./
 
-/node_modules
+# Ignorar dependências do Node
+node_modules/
