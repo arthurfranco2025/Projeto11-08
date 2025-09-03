@@ -25,6 +25,32 @@ model User{
   @@map("users")
 }
 
+model Client {
+  id         String    @id @default(uuid())
+  name       String
+  email      String
+  password   String
+  cpf        String
+  data_nasc  DateTime  @default(now())
+  created_at DateTime? @default(now())
+  update_at  DateTime? @default(now())
+
+  avaliacao  Avaliacao[]
+
+  @@map("clients")
+}
+
+model Favorito{
+  id         String @id @default(uuid())
+  created_at DateTime? @default(now())
+  update_at  DateTime? @default(now())
+
+  product    Product @relation(fields: [product_id], references: [id])
+  product_id String
+  
+  @@map("favorites")
+}
+
 model Category{
   id String @id @default(uuid())
   name String
@@ -45,10 +71,12 @@ model Product{
   update_at DateTime? @default(now())
 
   category Category @relation(fields: [category_id], references: [id])
+  category_id String
+
+  items Item[]
+  favorito    Favorito[]
 
   @@map("products")
-  category_id String
-  items Item[]
 }
 
 model Order{
@@ -60,8 +88,24 @@ model Order{
   created_at DateTime? @default(now())
   update_at DateTime? @default(now())
 
-  @@map("orders")
+  avaliacao  Avaliacao[]
   items Item[]
+
+  @@map("orders")
+}
+
+model Avaliacao {
+  id        String @id @default(uuid())
+  nota      Int
+  descricao String
+  created_at DateTime? @default(now())
+
+  client     Client   @relation(fields: [client_id], references: [id])
+  order      Order   @relation(fields: [order_id], references: [id])
+  client_id  String
+  order_id   String
+
+  @@map("avaliacoes")
 }
 
 model Item {
