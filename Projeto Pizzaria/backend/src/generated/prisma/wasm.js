@@ -126,6 +126,24 @@ exports.Prisma.UserScalarFieldEnum = {
   update_at: 'update_at'
 };
 
+exports.Prisma.ClienteScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  password: 'password',
+  cpf: 'cpf',
+  data_nasc: 'data_nasc',
+  created_at: 'created_at',
+  update_at: 'update_at'
+};
+
+exports.Prisma.FavoritoScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  update_at: 'update_at',
+  product_id: 'product_id'
+};
+
 exports.Prisma.CategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -152,6 +170,15 @@ exports.Prisma.OrderScalarFieldEnum = {
   name: 'name',
   created_at: 'created_at',
   update_at: 'update_at'
+};
+
+exports.Prisma.AvaliacaoScalarFieldEnum = {
+  id: 'id',
+  nota: 'nota',
+  descricao: 'descricao',
+  created_at: 'created_at',
+  cliente_id: 'cliente_id',
+  order_id: 'order_id'
 };
 
 exports.Prisma.ItemScalarFieldEnum = {
@@ -181,9 +208,12 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  Cliente: 'Cliente',
+  Favorito: 'Favorito',
   Category: 'Category',
   Product: 'Product',
   Order: 'Order',
+  Avaliacao: 'Avaliacao',
   Item: 'Item'
 };
 

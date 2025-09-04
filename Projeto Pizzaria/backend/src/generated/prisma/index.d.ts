@@ -19,6 +19,16 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 /**
+ * Model Cliente
+ * 
+ */
+export type Cliente = $Result.DefaultSelection<Prisma.$ClientePayload>
+/**
+ * Model Favorito
+ * 
+ */
+export type Favorito = $Result.DefaultSelection<Prisma.$FavoritoPayload>
+/**
  * Model Category
  * 
  */
@@ -33,6 +43,11 @@ export type Product = $Result.DefaultSelection<Prisma.$ProductPayload>
  * 
  */
 export type Order = $Result.DefaultSelection<Prisma.$OrderPayload>
+/**
+ * Model Avaliacao
+ * 
+ */
+export type Avaliacao = $Result.DefaultSelection<Prisma.$AvaliacaoPayload>
 /**
  * Model Item
  * 
@@ -175,6 +190,26 @@ export class PrismaClient<
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.cliente`: Exposes CRUD operations for the **Cliente** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Clientes
+    * const clientes = await prisma.cliente.findMany()
+    * ```
+    */
+  get cliente(): Prisma.ClienteDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.favorito`: Exposes CRUD operations for the **Favorito** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Favoritos
+    * const favoritos = await prisma.favorito.findMany()
+    * ```
+    */
+  get favorito(): Prisma.FavoritoDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.category`: Exposes CRUD operations for the **Category** model.
     * Example usage:
     * ```ts
@@ -203,6 +238,16 @@ export class PrismaClient<
     * ```
     */
   get order(): Prisma.OrderDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.avaliacao`: Exposes CRUD operations for the **Avaliacao** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Avaliacaos
+    * const avaliacaos = await prisma.avaliacao.findMany()
+    * ```
+    */
+  get avaliacao(): Prisma.AvaliacaoDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.item`: Exposes CRUD operations for the **Item** model.
@@ -654,9 +699,12 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
+    Cliente: 'Cliente',
+    Favorito: 'Favorito',
     Category: 'Category',
     Product: 'Product',
     Order: 'Order',
+    Avaliacao: 'Avaliacao',
     Item: 'Item'
   };
 
@@ -676,7 +724,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "category" | "product" | "order" | "item"
+      modelProps: "user" | "cliente" | "favorito" | "category" | "product" | "order" | "avaliacao" | "item"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -751,6 +799,154 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      Cliente: {
+        payload: Prisma.$ClientePayload<ExtArgs>
+        fields: Prisma.ClienteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ClienteFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ClienteFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientePayload>
+          }
+          findFirst: {
+            args: Prisma.ClienteFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ClienteFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientePayload>
+          }
+          findMany: {
+            args: Prisma.ClienteFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientePayload>[]
+          }
+          create: {
+            args: Prisma.ClienteCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientePayload>
+          }
+          createMany: {
+            args: Prisma.ClienteCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ClienteCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientePayload>[]
+          }
+          delete: {
+            args: Prisma.ClienteDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientePayload>
+          }
+          update: {
+            args: Prisma.ClienteUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientePayload>
+          }
+          deleteMany: {
+            args: Prisma.ClienteDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ClienteUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ClienteUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientePayload>[]
+          }
+          upsert: {
+            args: Prisma.ClienteUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientePayload>
+          }
+          aggregate: {
+            args: Prisma.ClienteAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCliente>
+          }
+          groupBy: {
+            args: Prisma.ClienteGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ClienteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ClienteCountArgs<ExtArgs>
+            result: $Utils.Optional<ClienteCountAggregateOutputType> | number
+          }
+        }
+      }
+      Favorito: {
+        payload: Prisma.$FavoritoPayload<ExtArgs>
+        fields: Prisma.FavoritoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FavoritoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FavoritoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>
+          }
+          findFirst: {
+            args: Prisma.FavoritoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FavoritoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>
+          }
+          findMany: {
+            args: Prisma.FavoritoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>[]
+          }
+          create: {
+            args: Prisma.FavoritoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>
+          }
+          createMany: {
+            args: Prisma.FavoritoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FavoritoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>[]
+          }
+          delete: {
+            args: Prisma.FavoritoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>
+          }
+          update: {
+            args: Prisma.FavoritoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>
+          }
+          deleteMany: {
+            args: Prisma.FavoritoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FavoritoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FavoritoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>[]
+          }
+          upsert: {
+            args: Prisma.FavoritoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>
+          }
+          aggregate: {
+            args: Prisma.FavoritoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFavorito>
+          }
+          groupBy: {
+            args: Prisma.FavoritoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FavoritoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FavoritoCountArgs<ExtArgs>
+            result: $Utils.Optional<FavoritoCountAggregateOutputType> | number
           }
         }
       }
@@ -976,6 +1172,80 @@ export namespace Prisma {
           }
         }
       }
+      Avaliacao: {
+        payload: Prisma.$AvaliacaoPayload<ExtArgs>
+        fields: Prisma.AvaliacaoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AvaliacaoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AvaliacaoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          findFirst: {
+            args: Prisma.AvaliacaoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AvaliacaoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          findMany: {
+            args: Prisma.AvaliacaoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>[]
+          }
+          create: {
+            args: Prisma.AvaliacaoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          createMany: {
+            args: Prisma.AvaliacaoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AvaliacaoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>[]
+          }
+          delete: {
+            args: Prisma.AvaliacaoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          update: {
+            args: Prisma.AvaliacaoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          deleteMany: {
+            args: Prisma.AvaliacaoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AvaliacaoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AvaliacaoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>[]
+          }
+          upsert: {
+            args: Prisma.AvaliacaoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          aggregate: {
+            args: Prisma.AvaliacaoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAvaliacao>
+          }
+          groupBy: {
+            args: Prisma.AvaliacaoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AvaliacaoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AvaliacaoCountArgs<ExtArgs>
+            result: $Utils.Optional<AvaliacaoCountAggregateOutputType> | number
+          }
+        }
+      }
       Item: {
         payload: Prisma.$ItemPayload<ExtArgs>
         fields: Prisma.ItemFieldRefs
@@ -1135,9 +1405,12 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
+    cliente?: ClienteOmit
+    favorito?: FavoritoOmit
     category?: CategoryOmit
     product?: ProductOmit
     order?: OrderOmit
+    avaliacao?: AvaliacaoOmit
     item?: ItemOmit
   }
 
@@ -1229,6 +1502,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type ClienteCountOutputType
+   */
+
+  export type ClienteCountOutputType = {
+    avaliacao: number
+  }
+
+  export type ClienteCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    avaliacao?: boolean | ClienteCountOutputTypeCountAvaliacaoArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ClienteCountOutputType without action
+   */
+  export type ClienteCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClienteCountOutputType
+     */
+    select?: ClienteCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ClienteCountOutputType without action
+   */
+  export type ClienteCountOutputTypeCountAvaliacaoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AvaliacaoWhereInput
+  }
+
+
+  /**
    * Count Type CategoryCountOutputType
    */
 
@@ -1265,10 +1569,12 @@ export namespace Prisma {
 
   export type ProductCountOutputType = {
     items: number
+    favorito: number
   }
 
   export type ProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     items?: boolean | ProductCountOutputTypeCountItemsArgs
+    favorito?: boolean | ProductCountOutputTypeCountFavoritoArgs
   }
 
   // Custom InputTypes
@@ -1289,16 +1595,25 @@ export namespace Prisma {
     where?: ItemWhereInput
   }
 
+  /**
+   * ProductCountOutputType without action
+   */
+  export type ProductCountOutputTypeCountFavoritoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FavoritoWhereInput
+  }
+
 
   /**
    * Count Type OrderCountOutputType
    */
 
   export type OrderCountOutputType = {
+    avaliacao: number
     items: number
   }
 
   export type OrderCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    avaliacao?: boolean | OrderCountOutputTypeCountAvaliacaoArgs
     items?: boolean | OrderCountOutputTypeCountItemsArgs
   }
 
@@ -1311,6 +1626,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the OrderCountOutputType
      */
     select?: OrderCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * OrderCountOutputType without action
+   */
+  export type OrderCountOutputTypeCountAvaliacaoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AvaliacaoWhereInput
   }
 
   /**
@@ -2330,6 +2652,2160 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Cliente
+   */
+
+  export type AggregateCliente = {
+    _count: ClienteCountAggregateOutputType | null
+    _min: ClienteMinAggregateOutputType | null
+    _max: ClienteMaxAggregateOutputType | null
+  }
+
+  export type ClienteMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    email: string | null
+    password: string | null
+    cpf: string | null
+    data_nasc: Date | null
+    created_at: Date | null
+    update_at: Date | null
+  }
+
+  export type ClienteMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    email: string | null
+    password: string | null
+    cpf: string | null
+    data_nasc: Date | null
+    created_at: Date | null
+    update_at: Date | null
+  }
+
+  export type ClienteCountAggregateOutputType = {
+    id: number
+    name: number
+    email: number
+    password: number
+    cpf: number
+    data_nasc: number
+    created_at: number
+    update_at: number
+    _all: number
+  }
+
+
+  export type ClienteMinAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    password?: true
+    cpf?: true
+    data_nasc?: true
+    created_at?: true
+    update_at?: true
+  }
+
+  export type ClienteMaxAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    password?: true
+    cpf?: true
+    data_nasc?: true
+    created_at?: true
+    update_at?: true
+  }
+
+  export type ClienteCountAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    password?: true
+    cpf?: true
+    data_nasc?: true
+    created_at?: true
+    update_at?: true
+    _all?: true
+  }
+
+  export type ClienteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Cliente to aggregate.
+     */
+    where?: ClienteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Clientes to fetch.
+     */
+    orderBy?: ClienteOrderByWithRelationInput | ClienteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ClienteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Clientes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Clientes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Clientes
+    **/
+    _count?: true | ClienteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ClienteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ClienteMaxAggregateInputType
+  }
+
+  export type GetClienteAggregateType<T extends ClienteAggregateArgs> = {
+        [P in keyof T & keyof AggregateCliente]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCliente[P]>
+      : GetScalarType<T[P], AggregateCliente[P]>
+  }
+
+
+
+
+  export type ClienteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ClienteWhereInput
+    orderBy?: ClienteOrderByWithAggregationInput | ClienteOrderByWithAggregationInput[]
+    by: ClienteScalarFieldEnum[] | ClienteScalarFieldEnum
+    having?: ClienteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ClienteCountAggregateInputType | true
+    _min?: ClienteMinAggregateInputType
+    _max?: ClienteMaxAggregateInputType
+  }
+
+  export type ClienteGroupByOutputType = {
+    id: string
+    name: string
+    email: string
+    password: string
+    cpf: string
+    data_nasc: Date | null
+    created_at: Date | null
+    update_at: Date | null
+    _count: ClienteCountAggregateOutputType | null
+    _min: ClienteMinAggregateOutputType | null
+    _max: ClienteMaxAggregateOutputType | null
+  }
+
+  type GetClienteGroupByPayload<T extends ClienteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ClienteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ClienteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ClienteGroupByOutputType[P]>
+            : GetScalarType<T[P], ClienteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ClienteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    password?: boolean
+    cpf?: boolean
+    data_nasc?: boolean
+    created_at?: boolean
+    update_at?: boolean
+    avaliacao?: boolean | Cliente$avaliacaoArgs<ExtArgs>
+    _count?: boolean | ClienteCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cliente"]>
+
+  export type ClienteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    password?: boolean
+    cpf?: boolean
+    data_nasc?: boolean
+    created_at?: boolean
+    update_at?: boolean
+  }, ExtArgs["result"]["cliente"]>
+
+  export type ClienteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    password?: boolean
+    cpf?: boolean
+    data_nasc?: boolean
+    created_at?: boolean
+    update_at?: boolean
+  }, ExtArgs["result"]["cliente"]>
+
+  export type ClienteSelectScalar = {
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    password?: boolean
+    cpf?: boolean
+    data_nasc?: boolean
+    created_at?: boolean
+    update_at?: boolean
+  }
+
+  export type ClienteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "cpf" | "data_nasc" | "created_at" | "update_at", ExtArgs["result"]["cliente"]>
+  export type ClienteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    avaliacao?: boolean | Cliente$avaliacaoArgs<ExtArgs>
+    _count?: boolean | ClienteCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ClienteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ClienteIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ClientePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Cliente"
+    objects: {
+      avaliacao: Prisma.$AvaliacaoPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      email: string
+      password: string
+      cpf: string
+      data_nasc: Date | null
+      created_at: Date | null
+      update_at: Date | null
+    }, ExtArgs["result"]["cliente"]>
+    composites: {}
+  }
+
+  type ClienteGetPayload<S extends boolean | null | undefined | ClienteDefaultArgs> = $Result.GetResult<Prisma.$ClientePayload, S>
+
+  type ClienteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ClienteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ClienteCountAggregateInputType | true
+    }
+
+  export interface ClienteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Cliente'], meta: { name: 'Cliente' } }
+    /**
+     * Find zero or one Cliente that matches the filter.
+     * @param {ClienteFindUniqueArgs} args - Arguments to find a Cliente
+     * @example
+     * // Get one Cliente
+     * const cliente = await prisma.cliente.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ClienteFindUniqueArgs>(args: SelectSubset<T, ClienteFindUniqueArgs<ExtArgs>>): Prisma__ClienteClient<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Cliente that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ClienteFindUniqueOrThrowArgs} args - Arguments to find a Cliente
+     * @example
+     * // Get one Cliente
+     * const cliente = await prisma.cliente.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ClienteFindUniqueOrThrowArgs>(args: SelectSubset<T, ClienteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ClienteClient<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Cliente that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClienteFindFirstArgs} args - Arguments to find a Cliente
+     * @example
+     * // Get one Cliente
+     * const cliente = await prisma.cliente.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ClienteFindFirstArgs>(args?: SelectSubset<T, ClienteFindFirstArgs<ExtArgs>>): Prisma__ClienteClient<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Cliente that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClienteFindFirstOrThrowArgs} args - Arguments to find a Cliente
+     * @example
+     * // Get one Cliente
+     * const cliente = await prisma.cliente.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ClienteFindFirstOrThrowArgs>(args?: SelectSubset<T, ClienteFindFirstOrThrowArgs<ExtArgs>>): Prisma__ClienteClient<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Clientes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClienteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Clientes
+     * const clientes = await prisma.cliente.findMany()
+     * 
+     * // Get first 10 Clientes
+     * const clientes = await prisma.cliente.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const clienteWithIdOnly = await prisma.cliente.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ClienteFindManyArgs>(args?: SelectSubset<T, ClienteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Cliente.
+     * @param {ClienteCreateArgs} args - Arguments to create a Cliente.
+     * @example
+     * // Create one Cliente
+     * const Cliente = await prisma.cliente.create({
+     *   data: {
+     *     // ... data to create a Cliente
+     *   }
+     * })
+     * 
+     */
+    create<T extends ClienteCreateArgs>(args: SelectSubset<T, ClienteCreateArgs<ExtArgs>>): Prisma__ClienteClient<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Clientes.
+     * @param {ClienteCreateManyArgs} args - Arguments to create many Clientes.
+     * @example
+     * // Create many Clientes
+     * const cliente = await prisma.cliente.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ClienteCreateManyArgs>(args?: SelectSubset<T, ClienteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Clientes and returns the data saved in the database.
+     * @param {ClienteCreateManyAndReturnArgs} args - Arguments to create many Clientes.
+     * @example
+     * // Create many Clientes
+     * const cliente = await prisma.cliente.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Clientes and only return the `id`
+     * const clienteWithIdOnly = await prisma.cliente.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ClienteCreateManyAndReturnArgs>(args?: SelectSubset<T, ClienteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Cliente.
+     * @param {ClienteDeleteArgs} args - Arguments to delete one Cliente.
+     * @example
+     * // Delete one Cliente
+     * const Cliente = await prisma.cliente.delete({
+     *   where: {
+     *     // ... filter to delete one Cliente
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ClienteDeleteArgs>(args: SelectSubset<T, ClienteDeleteArgs<ExtArgs>>): Prisma__ClienteClient<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Cliente.
+     * @param {ClienteUpdateArgs} args - Arguments to update one Cliente.
+     * @example
+     * // Update one Cliente
+     * const cliente = await prisma.cliente.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ClienteUpdateArgs>(args: SelectSubset<T, ClienteUpdateArgs<ExtArgs>>): Prisma__ClienteClient<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Clientes.
+     * @param {ClienteDeleteManyArgs} args - Arguments to filter Clientes to delete.
+     * @example
+     * // Delete a few Clientes
+     * const { count } = await prisma.cliente.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ClienteDeleteManyArgs>(args?: SelectSubset<T, ClienteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Clientes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClienteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Clientes
+     * const cliente = await prisma.cliente.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ClienteUpdateManyArgs>(args: SelectSubset<T, ClienteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Clientes and returns the data updated in the database.
+     * @param {ClienteUpdateManyAndReturnArgs} args - Arguments to update many Clientes.
+     * @example
+     * // Update many Clientes
+     * const cliente = await prisma.cliente.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Clientes and only return the `id`
+     * const clienteWithIdOnly = await prisma.cliente.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ClienteUpdateManyAndReturnArgs>(args: SelectSubset<T, ClienteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Cliente.
+     * @param {ClienteUpsertArgs} args - Arguments to update or create a Cliente.
+     * @example
+     * // Update or create a Cliente
+     * const cliente = await prisma.cliente.upsert({
+     *   create: {
+     *     // ... data to create a Cliente
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Cliente we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ClienteUpsertArgs>(args: SelectSubset<T, ClienteUpsertArgs<ExtArgs>>): Prisma__ClienteClient<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Clientes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClienteCountArgs} args - Arguments to filter Clientes to count.
+     * @example
+     * // Count the number of Clientes
+     * const count = await prisma.cliente.count({
+     *   where: {
+     *     // ... the filter for the Clientes we want to count
+     *   }
+     * })
+    **/
+    count<T extends ClienteCountArgs>(
+      args?: Subset<T, ClienteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ClienteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Cliente.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClienteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ClienteAggregateArgs>(args: Subset<T, ClienteAggregateArgs>): Prisma.PrismaPromise<GetClienteAggregateType<T>>
+
+    /**
+     * Group by Cliente.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClienteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ClienteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ClienteGroupByArgs['orderBy'] }
+        : { orderBy?: ClienteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ClienteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClienteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Cliente model
+   */
+  readonly fields: ClienteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Cliente.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ClienteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    avaliacao<T extends Cliente$avaliacaoArgs<ExtArgs> = {}>(args?: Subset<T, Cliente$avaliacaoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Cliente model
+   */
+  interface ClienteFieldRefs {
+    readonly id: FieldRef<"Cliente", 'String'>
+    readonly name: FieldRef<"Cliente", 'String'>
+    readonly email: FieldRef<"Cliente", 'String'>
+    readonly password: FieldRef<"Cliente", 'String'>
+    readonly cpf: FieldRef<"Cliente", 'String'>
+    readonly data_nasc: FieldRef<"Cliente", 'DateTime'>
+    readonly created_at: FieldRef<"Cliente", 'DateTime'>
+    readonly update_at: FieldRef<"Cliente", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Cliente findUnique
+   */
+  export type ClienteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cliente
+     */
+    select?: ClienteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cliente
+     */
+    omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+    /**
+     * Filter, which Cliente to fetch.
+     */
+    where: ClienteWhereUniqueInput
+  }
+
+  /**
+   * Cliente findUniqueOrThrow
+   */
+  export type ClienteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cliente
+     */
+    select?: ClienteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cliente
+     */
+    omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+    /**
+     * Filter, which Cliente to fetch.
+     */
+    where: ClienteWhereUniqueInput
+  }
+
+  /**
+   * Cliente findFirst
+   */
+  export type ClienteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cliente
+     */
+    select?: ClienteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cliente
+     */
+    omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+    /**
+     * Filter, which Cliente to fetch.
+     */
+    where?: ClienteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Clientes to fetch.
+     */
+    orderBy?: ClienteOrderByWithRelationInput | ClienteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Clientes.
+     */
+    cursor?: ClienteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Clientes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Clientes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Clientes.
+     */
+    distinct?: ClienteScalarFieldEnum | ClienteScalarFieldEnum[]
+  }
+
+  /**
+   * Cliente findFirstOrThrow
+   */
+  export type ClienteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cliente
+     */
+    select?: ClienteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cliente
+     */
+    omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+    /**
+     * Filter, which Cliente to fetch.
+     */
+    where?: ClienteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Clientes to fetch.
+     */
+    orderBy?: ClienteOrderByWithRelationInput | ClienteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Clientes.
+     */
+    cursor?: ClienteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Clientes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Clientes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Clientes.
+     */
+    distinct?: ClienteScalarFieldEnum | ClienteScalarFieldEnum[]
+  }
+
+  /**
+   * Cliente findMany
+   */
+  export type ClienteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cliente
+     */
+    select?: ClienteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cliente
+     */
+    omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+    /**
+     * Filter, which Clientes to fetch.
+     */
+    where?: ClienteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Clientes to fetch.
+     */
+    orderBy?: ClienteOrderByWithRelationInput | ClienteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Clientes.
+     */
+    cursor?: ClienteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Clientes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Clientes.
+     */
+    skip?: number
+    distinct?: ClienteScalarFieldEnum | ClienteScalarFieldEnum[]
+  }
+
+  /**
+   * Cliente create
+   */
+  export type ClienteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cliente
+     */
+    select?: ClienteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cliente
+     */
+    omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Cliente.
+     */
+    data: XOR<ClienteCreateInput, ClienteUncheckedCreateInput>
+  }
+
+  /**
+   * Cliente createMany
+   */
+  export type ClienteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Clientes.
+     */
+    data: ClienteCreateManyInput | ClienteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Cliente createManyAndReturn
+   */
+  export type ClienteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cliente
+     */
+    select?: ClienteSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cliente
+     */
+    omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * The data used to create many Clientes.
+     */
+    data: ClienteCreateManyInput | ClienteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Cliente update
+   */
+  export type ClienteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cliente
+     */
+    select?: ClienteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cliente
+     */
+    omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Cliente.
+     */
+    data: XOR<ClienteUpdateInput, ClienteUncheckedUpdateInput>
+    /**
+     * Choose, which Cliente to update.
+     */
+    where: ClienteWhereUniqueInput
+  }
+
+  /**
+   * Cliente updateMany
+   */
+  export type ClienteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Clientes.
+     */
+    data: XOR<ClienteUpdateManyMutationInput, ClienteUncheckedUpdateManyInput>
+    /**
+     * Filter which Clientes to update
+     */
+    where?: ClienteWhereInput
+    /**
+     * Limit how many Clientes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Cliente updateManyAndReturn
+   */
+  export type ClienteUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cliente
+     */
+    select?: ClienteSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cliente
+     */
+    omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * The data used to update Clientes.
+     */
+    data: XOR<ClienteUpdateManyMutationInput, ClienteUncheckedUpdateManyInput>
+    /**
+     * Filter which Clientes to update
+     */
+    where?: ClienteWhereInput
+    /**
+     * Limit how many Clientes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Cliente upsert
+   */
+  export type ClienteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cliente
+     */
+    select?: ClienteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cliente
+     */
+    omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Cliente to update in case it exists.
+     */
+    where: ClienteWhereUniqueInput
+    /**
+     * In case the Cliente found by the `where` argument doesn't exist, create a new Cliente with this data.
+     */
+    create: XOR<ClienteCreateInput, ClienteUncheckedCreateInput>
+    /**
+     * In case the Cliente was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ClienteUpdateInput, ClienteUncheckedUpdateInput>
+  }
+
+  /**
+   * Cliente delete
+   */
+  export type ClienteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cliente
+     */
+    select?: ClienteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cliente
+     */
+    omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+    /**
+     * Filter which Cliente to delete.
+     */
+    where: ClienteWhereUniqueInput
+  }
+
+  /**
+   * Cliente deleteMany
+   */
+  export type ClienteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Clientes to delete
+     */
+    where?: ClienteWhereInput
+    /**
+     * Limit how many Clientes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Cliente.avaliacao
+   */
+  export type Cliente$avaliacaoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    where?: AvaliacaoWhereInput
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    cursor?: AvaliacaoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Cliente without action
+   */
+  export type ClienteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cliente
+     */
+    select?: ClienteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cliente
+     */
+    omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Favorito
+   */
+
+  export type AggregateFavorito = {
+    _count: FavoritoCountAggregateOutputType | null
+    _min: FavoritoMinAggregateOutputType | null
+    _max: FavoritoMaxAggregateOutputType | null
+  }
+
+  export type FavoritoMinAggregateOutputType = {
+    id: string | null
+    created_at: Date | null
+    update_at: Date | null
+    product_id: string | null
+  }
+
+  export type FavoritoMaxAggregateOutputType = {
+    id: string | null
+    created_at: Date | null
+    update_at: Date | null
+    product_id: string | null
+  }
+
+  export type FavoritoCountAggregateOutputType = {
+    id: number
+    created_at: number
+    update_at: number
+    product_id: number
+    _all: number
+  }
+
+
+  export type FavoritoMinAggregateInputType = {
+    id?: true
+    created_at?: true
+    update_at?: true
+    product_id?: true
+  }
+
+  export type FavoritoMaxAggregateInputType = {
+    id?: true
+    created_at?: true
+    update_at?: true
+    product_id?: true
+  }
+
+  export type FavoritoCountAggregateInputType = {
+    id?: true
+    created_at?: true
+    update_at?: true
+    product_id?: true
+    _all?: true
+  }
+
+  export type FavoritoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Favorito to aggregate.
+     */
+    where?: FavoritoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Favoritos to fetch.
+     */
+    orderBy?: FavoritoOrderByWithRelationInput | FavoritoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FavoritoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Favoritos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Favoritos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Favoritos
+    **/
+    _count?: true | FavoritoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FavoritoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FavoritoMaxAggregateInputType
+  }
+
+  export type GetFavoritoAggregateType<T extends FavoritoAggregateArgs> = {
+        [P in keyof T & keyof AggregateFavorito]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFavorito[P]>
+      : GetScalarType<T[P], AggregateFavorito[P]>
+  }
+
+
+
+
+  export type FavoritoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FavoritoWhereInput
+    orderBy?: FavoritoOrderByWithAggregationInput | FavoritoOrderByWithAggregationInput[]
+    by: FavoritoScalarFieldEnum[] | FavoritoScalarFieldEnum
+    having?: FavoritoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FavoritoCountAggregateInputType | true
+    _min?: FavoritoMinAggregateInputType
+    _max?: FavoritoMaxAggregateInputType
+  }
+
+  export type FavoritoGroupByOutputType = {
+    id: string
+    created_at: Date | null
+    update_at: Date | null
+    product_id: string
+    _count: FavoritoCountAggregateOutputType | null
+    _min: FavoritoMinAggregateOutputType | null
+    _max: FavoritoMaxAggregateOutputType | null
+  }
+
+  type GetFavoritoGroupByPayload<T extends FavoritoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FavoritoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FavoritoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FavoritoGroupByOutputType[P]>
+            : GetScalarType<T[P], FavoritoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FavoritoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    created_at?: boolean
+    update_at?: boolean
+    product_id?: boolean
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["favorito"]>
+
+  export type FavoritoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    created_at?: boolean
+    update_at?: boolean
+    product_id?: boolean
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["favorito"]>
+
+  export type FavoritoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    created_at?: boolean
+    update_at?: boolean
+    product_id?: boolean
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["favorito"]>
+
+  export type FavoritoSelectScalar = {
+    id?: boolean
+    created_at?: boolean
+    update_at?: boolean
+    product_id?: boolean
+  }
+
+  export type FavoritoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "update_at" | "product_id", ExtArgs["result"]["favorito"]>
+  export type FavoritoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+  export type FavoritoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+  export type FavoritoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+
+  export type $FavoritoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Favorito"
+    objects: {
+      product: Prisma.$ProductPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      created_at: Date | null
+      update_at: Date | null
+      product_id: string
+    }, ExtArgs["result"]["favorito"]>
+    composites: {}
+  }
+
+  type FavoritoGetPayload<S extends boolean | null | undefined | FavoritoDefaultArgs> = $Result.GetResult<Prisma.$FavoritoPayload, S>
+
+  type FavoritoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FavoritoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FavoritoCountAggregateInputType | true
+    }
+
+  export interface FavoritoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Favorito'], meta: { name: 'Favorito' } }
+    /**
+     * Find zero or one Favorito that matches the filter.
+     * @param {FavoritoFindUniqueArgs} args - Arguments to find a Favorito
+     * @example
+     * // Get one Favorito
+     * const favorito = await prisma.favorito.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FavoritoFindUniqueArgs>(args: SelectSubset<T, FavoritoFindUniqueArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Favorito that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FavoritoFindUniqueOrThrowArgs} args - Arguments to find a Favorito
+     * @example
+     * // Get one Favorito
+     * const favorito = await prisma.favorito.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FavoritoFindUniqueOrThrowArgs>(args: SelectSubset<T, FavoritoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Favorito that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoritoFindFirstArgs} args - Arguments to find a Favorito
+     * @example
+     * // Get one Favorito
+     * const favorito = await prisma.favorito.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FavoritoFindFirstArgs>(args?: SelectSubset<T, FavoritoFindFirstArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Favorito that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoritoFindFirstOrThrowArgs} args - Arguments to find a Favorito
+     * @example
+     * // Get one Favorito
+     * const favorito = await prisma.favorito.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FavoritoFindFirstOrThrowArgs>(args?: SelectSubset<T, FavoritoFindFirstOrThrowArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Favoritos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoritoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Favoritos
+     * const favoritos = await prisma.favorito.findMany()
+     * 
+     * // Get first 10 Favoritos
+     * const favoritos = await prisma.favorito.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const favoritoWithIdOnly = await prisma.favorito.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FavoritoFindManyArgs>(args?: SelectSubset<T, FavoritoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Favorito.
+     * @param {FavoritoCreateArgs} args - Arguments to create a Favorito.
+     * @example
+     * // Create one Favorito
+     * const Favorito = await prisma.favorito.create({
+     *   data: {
+     *     // ... data to create a Favorito
+     *   }
+     * })
+     * 
+     */
+    create<T extends FavoritoCreateArgs>(args: SelectSubset<T, FavoritoCreateArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Favoritos.
+     * @param {FavoritoCreateManyArgs} args - Arguments to create many Favoritos.
+     * @example
+     * // Create many Favoritos
+     * const favorito = await prisma.favorito.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FavoritoCreateManyArgs>(args?: SelectSubset<T, FavoritoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Favoritos and returns the data saved in the database.
+     * @param {FavoritoCreateManyAndReturnArgs} args - Arguments to create many Favoritos.
+     * @example
+     * // Create many Favoritos
+     * const favorito = await prisma.favorito.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Favoritos and only return the `id`
+     * const favoritoWithIdOnly = await prisma.favorito.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FavoritoCreateManyAndReturnArgs>(args?: SelectSubset<T, FavoritoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Favorito.
+     * @param {FavoritoDeleteArgs} args - Arguments to delete one Favorito.
+     * @example
+     * // Delete one Favorito
+     * const Favorito = await prisma.favorito.delete({
+     *   where: {
+     *     // ... filter to delete one Favorito
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FavoritoDeleteArgs>(args: SelectSubset<T, FavoritoDeleteArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Favorito.
+     * @param {FavoritoUpdateArgs} args - Arguments to update one Favorito.
+     * @example
+     * // Update one Favorito
+     * const favorito = await prisma.favorito.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FavoritoUpdateArgs>(args: SelectSubset<T, FavoritoUpdateArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Favoritos.
+     * @param {FavoritoDeleteManyArgs} args - Arguments to filter Favoritos to delete.
+     * @example
+     * // Delete a few Favoritos
+     * const { count } = await prisma.favorito.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FavoritoDeleteManyArgs>(args?: SelectSubset<T, FavoritoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Favoritos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoritoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Favoritos
+     * const favorito = await prisma.favorito.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FavoritoUpdateManyArgs>(args: SelectSubset<T, FavoritoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Favoritos and returns the data updated in the database.
+     * @param {FavoritoUpdateManyAndReturnArgs} args - Arguments to update many Favoritos.
+     * @example
+     * // Update many Favoritos
+     * const favorito = await prisma.favorito.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Favoritos and only return the `id`
+     * const favoritoWithIdOnly = await prisma.favorito.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FavoritoUpdateManyAndReturnArgs>(args: SelectSubset<T, FavoritoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Favorito.
+     * @param {FavoritoUpsertArgs} args - Arguments to update or create a Favorito.
+     * @example
+     * // Update or create a Favorito
+     * const favorito = await prisma.favorito.upsert({
+     *   create: {
+     *     // ... data to create a Favorito
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Favorito we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FavoritoUpsertArgs>(args: SelectSubset<T, FavoritoUpsertArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Favoritos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoritoCountArgs} args - Arguments to filter Favoritos to count.
+     * @example
+     * // Count the number of Favoritos
+     * const count = await prisma.favorito.count({
+     *   where: {
+     *     // ... the filter for the Favoritos we want to count
+     *   }
+     * })
+    **/
+    count<T extends FavoritoCountArgs>(
+      args?: Subset<T, FavoritoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FavoritoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Favorito.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoritoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FavoritoAggregateArgs>(args: Subset<T, FavoritoAggregateArgs>): Prisma.PrismaPromise<GetFavoritoAggregateType<T>>
+
+    /**
+     * Group by Favorito.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoritoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FavoritoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FavoritoGroupByArgs['orderBy'] }
+        : { orderBy?: FavoritoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FavoritoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFavoritoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Favorito model
+   */
+  readonly fields: FavoritoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Favorito.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FavoritoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Favorito model
+   */
+  interface FavoritoFieldRefs {
+    readonly id: FieldRef<"Favorito", 'String'>
+    readonly created_at: FieldRef<"Favorito", 'DateTime'>
+    readonly update_at: FieldRef<"Favorito", 'DateTime'>
+    readonly product_id: FieldRef<"Favorito", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Favorito findUnique
+   */
+  export type FavoritoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * Filter, which Favorito to fetch.
+     */
+    where: FavoritoWhereUniqueInput
+  }
+
+  /**
+   * Favorito findUniqueOrThrow
+   */
+  export type FavoritoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * Filter, which Favorito to fetch.
+     */
+    where: FavoritoWhereUniqueInput
+  }
+
+  /**
+   * Favorito findFirst
+   */
+  export type FavoritoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * Filter, which Favorito to fetch.
+     */
+    where?: FavoritoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Favoritos to fetch.
+     */
+    orderBy?: FavoritoOrderByWithRelationInput | FavoritoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Favoritos.
+     */
+    cursor?: FavoritoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Favoritos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Favoritos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Favoritos.
+     */
+    distinct?: FavoritoScalarFieldEnum | FavoritoScalarFieldEnum[]
+  }
+
+  /**
+   * Favorito findFirstOrThrow
+   */
+  export type FavoritoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * Filter, which Favorito to fetch.
+     */
+    where?: FavoritoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Favoritos to fetch.
+     */
+    orderBy?: FavoritoOrderByWithRelationInput | FavoritoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Favoritos.
+     */
+    cursor?: FavoritoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Favoritos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Favoritos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Favoritos.
+     */
+    distinct?: FavoritoScalarFieldEnum | FavoritoScalarFieldEnum[]
+  }
+
+  /**
+   * Favorito findMany
+   */
+  export type FavoritoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * Filter, which Favoritos to fetch.
+     */
+    where?: FavoritoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Favoritos to fetch.
+     */
+    orderBy?: FavoritoOrderByWithRelationInput | FavoritoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Favoritos.
+     */
+    cursor?: FavoritoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Favoritos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Favoritos.
+     */
+    skip?: number
+    distinct?: FavoritoScalarFieldEnum | FavoritoScalarFieldEnum[]
+  }
+
+  /**
+   * Favorito create
+   */
+  export type FavoritoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Favorito.
+     */
+    data: XOR<FavoritoCreateInput, FavoritoUncheckedCreateInput>
+  }
+
+  /**
+   * Favorito createMany
+   */
+  export type FavoritoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Favoritos.
+     */
+    data: FavoritoCreateManyInput | FavoritoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Favorito createManyAndReturn
+   */
+  export type FavoritoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * The data used to create many Favoritos.
+     */
+    data: FavoritoCreateManyInput | FavoritoCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Favorito update
+   */
+  export type FavoritoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Favorito.
+     */
+    data: XOR<FavoritoUpdateInput, FavoritoUncheckedUpdateInput>
+    /**
+     * Choose, which Favorito to update.
+     */
+    where: FavoritoWhereUniqueInput
+  }
+
+  /**
+   * Favorito updateMany
+   */
+  export type FavoritoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Favoritos.
+     */
+    data: XOR<FavoritoUpdateManyMutationInput, FavoritoUncheckedUpdateManyInput>
+    /**
+     * Filter which Favoritos to update
+     */
+    where?: FavoritoWhereInput
+    /**
+     * Limit how many Favoritos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Favorito updateManyAndReturn
+   */
+  export type FavoritoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * The data used to update Favoritos.
+     */
+    data: XOR<FavoritoUpdateManyMutationInput, FavoritoUncheckedUpdateManyInput>
+    /**
+     * Filter which Favoritos to update
+     */
+    where?: FavoritoWhereInput
+    /**
+     * Limit how many Favoritos to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Favorito upsert
+   */
+  export type FavoritoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Favorito to update in case it exists.
+     */
+    where: FavoritoWhereUniqueInput
+    /**
+     * In case the Favorito found by the `where` argument doesn't exist, create a new Favorito with this data.
+     */
+    create: XOR<FavoritoCreateInput, FavoritoUncheckedCreateInput>
+    /**
+     * In case the Favorito was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FavoritoUpdateInput, FavoritoUncheckedUpdateInput>
+  }
+
+  /**
+   * Favorito delete
+   */
+  export type FavoritoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * Filter which Favorito to delete.
+     */
+    where: FavoritoWhereUniqueInput
+  }
+
+  /**
+   * Favorito deleteMany
+   */
+  export type FavoritoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Favoritos to delete
+     */
+    where?: FavoritoWhereInput
+    /**
+     * Limit how many Favoritos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Favorito without action
+   */
+  export type FavoritoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
   }
 
 
@@ -3580,6 +6056,7 @@ export namespace Prisma {
     category_id?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     items?: boolean | Product$itemsArgs<ExtArgs>
+    favorito?: boolean | Product$favoritoArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["product"]>
 
@@ -3622,6 +6099,7 @@ export namespace Prisma {
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     items?: boolean | Product$itemsArgs<ExtArgs>
+    favorito?: boolean | Product$favoritoArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProductIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3636,6 +6114,7 @@ export namespace Prisma {
     objects: {
       category: Prisma.$CategoryPayload<ExtArgs>
       items: Prisma.$ItemPayload<ExtArgs>[]
+      favorito: Prisma.$FavoritoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4042,6 +6521,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     items<T extends Product$itemsArgs<ExtArgs> = {}>(args?: Subset<T, Product$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    favorito<T extends Product$favoritoArgs<ExtArgs> = {}>(args?: Subset<T, Product$favoritoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4499,6 +6979,30 @@ export namespace Prisma {
   }
 
   /**
+   * Product.favorito
+   */
+  export type Product$favoritoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    where?: FavoritoWhereInput
+    orderBy?: FavoritoOrderByWithRelationInput | FavoritoOrderByWithRelationInput[]
+    cursor?: FavoritoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FavoritoScalarFieldEnum | FavoritoScalarFieldEnum[]
+  }
+
+  /**
    * Product without action
    */
   export type ProductDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4731,6 +7235,7 @@ export namespace Prisma {
     name?: boolean
     created_at?: boolean
     update_at?: boolean
+    avaliacao?: boolean | Order$avaliacaoArgs<ExtArgs>
     items?: boolean | Order$itemsArgs<ExtArgs>
     _count?: boolean | OrderCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["order"]>
@@ -4767,6 +7272,7 @@ export namespace Prisma {
 
   export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "table" | "status" | "draft" | "name" | "created_at" | "update_at", ExtArgs["result"]["order"]>
   export type OrderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    avaliacao?: boolean | Order$avaliacaoArgs<ExtArgs>
     items?: boolean | Order$itemsArgs<ExtArgs>
     _count?: boolean | OrderCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -4776,6 +7282,7 @@ export namespace Prisma {
   export type $OrderPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Order"
     objects: {
+      avaliacao: Prisma.$AvaliacaoPayload<ExtArgs>[]
       items: Prisma.$ItemPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -5180,6 +7687,7 @@ export namespace Prisma {
    */
   export interface Prisma__OrderClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    avaliacao<T extends Order$avaliacaoArgs<ExtArgs> = {}>(args?: Subset<T, Order$avaliacaoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     items<T extends Order$itemsArgs<ExtArgs> = {}>(args?: Subset<T, Order$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5605,6 +8113,30 @@ export namespace Prisma {
   }
 
   /**
+   * Order.avaliacao
+   */
+  export type Order$avaliacaoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    where?: AvaliacaoWhereInput
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    cursor?: AvaliacaoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
    * Order.items
    */
   export type Order$itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5644,6 +8176,1119 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: OrderInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Avaliacao
+   */
+
+  export type AggregateAvaliacao = {
+    _count: AvaliacaoCountAggregateOutputType | null
+    _avg: AvaliacaoAvgAggregateOutputType | null
+    _sum: AvaliacaoSumAggregateOutputType | null
+    _min: AvaliacaoMinAggregateOutputType | null
+    _max: AvaliacaoMaxAggregateOutputType | null
+  }
+
+  export type AvaliacaoAvgAggregateOutputType = {
+    nota: number | null
+  }
+
+  export type AvaliacaoSumAggregateOutputType = {
+    nota: number | null
+  }
+
+  export type AvaliacaoMinAggregateOutputType = {
+    id: string | null
+    nota: number | null
+    descricao: string | null
+    created_at: Date | null
+    cliente_id: string | null
+    order_id: string | null
+  }
+
+  export type AvaliacaoMaxAggregateOutputType = {
+    id: string | null
+    nota: number | null
+    descricao: string | null
+    created_at: Date | null
+    cliente_id: string | null
+    order_id: string | null
+  }
+
+  export type AvaliacaoCountAggregateOutputType = {
+    id: number
+    nota: number
+    descricao: number
+    created_at: number
+    cliente_id: number
+    order_id: number
+    _all: number
+  }
+
+
+  export type AvaliacaoAvgAggregateInputType = {
+    nota?: true
+  }
+
+  export type AvaliacaoSumAggregateInputType = {
+    nota?: true
+  }
+
+  export type AvaliacaoMinAggregateInputType = {
+    id?: true
+    nota?: true
+    descricao?: true
+    created_at?: true
+    cliente_id?: true
+    order_id?: true
+  }
+
+  export type AvaliacaoMaxAggregateInputType = {
+    id?: true
+    nota?: true
+    descricao?: true
+    created_at?: true
+    cliente_id?: true
+    order_id?: true
+  }
+
+  export type AvaliacaoCountAggregateInputType = {
+    id?: true
+    nota?: true
+    descricao?: true
+    created_at?: true
+    cliente_id?: true
+    order_id?: true
+    _all?: true
+  }
+
+  export type AvaliacaoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Avaliacao to aggregate.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Avaliacaos
+    **/
+    _count?: true | AvaliacaoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AvaliacaoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AvaliacaoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AvaliacaoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AvaliacaoMaxAggregateInputType
+  }
+
+  export type GetAvaliacaoAggregateType<T extends AvaliacaoAggregateArgs> = {
+        [P in keyof T & keyof AggregateAvaliacao]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAvaliacao[P]>
+      : GetScalarType<T[P], AggregateAvaliacao[P]>
+  }
+
+
+
+
+  export type AvaliacaoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AvaliacaoWhereInput
+    orderBy?: AvaliacaoOrderByWithAggregationInput | AvaliacaoOrderByWithAggregationInput[]
+    by: AvaliacaoScalarFieldEnum[] | AvaliacaoScalarFieldEnum
+    having?: AvaliacaoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AvaliacaoCountAggregateInputType | true
+    _avg?: AvaliacaoAvgAggregateInputType
+    _sum?: AvaliacaoSumAggregateInputType
+    _min?: AvaliacaoMinAggregateInputType
+    _max?: AvaliacaoMaxAggregateInputType
+  }
+
+  export type AvaliacaoGroupByOutputType = {
+    id: string
+    nota: number
+    descricao: string
+    created_at: Date | null
+    cliente_id: string
+    order_id: string
+    _count: AvaliacaoCountAggregateOutputType | null
+    _avg: AvaliacaoAvgAggregateOutputType | null
+    _sum: AvaliacaoSumAggregateOutputType | null
+    _min: AvaliacaoMinAggregateOutputType | null
+    _max: AvaliacaoMaxAggregateOutputType | null
+  }
+
+  type GetAvaliacaoGroupByPayload<T extends AvaliacaoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AvaliacaoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AvaliacaoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AvaliacaoGroupByOutputType[P]>
+            : GetScalarType<T[P], AvaliacaoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AvaliacaoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nota?: boolean
+    descricao?: boolean
+    created_at?: boolean
+    cliente_id?: boolean
+    order_id?: boolean
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    order?: boolean | OrderDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["avaliacao"]>
+
+  export type AvaliacaoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nota?: boolean
+    descricao?: boolean
+    created_at?: boolean
+    cliente_id?: boolean
+    order_id?: boolean
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    order?: boolean | OrderDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["avaliacao"]>
+
+  export type AvaliacaoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nota?: boolean
+    descricao?: boolean
+    created_at?: boolean
+    cliente_id?: boolean
+    order_id?: boolean
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    order?: boolean | OrderDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["avaliacao"]>
+
+  export type AvaliacaoSelectScalar = {
+    id?: boolean
+    nota?: boolean
+    descricao?: boolean
+    created_at?: boolean
+    cliente_id?: boolean
+    order_id?: boolean
+  }
+
+  export type AvaliacaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nota" | "descricao" | "created_at" | "cliente_id" | "order_id", ExtArgs["result"]["avaliacao"]>
+  export type AvaliacaoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    order?: boolean | OrderDefaultArgs<ExtArgs>
+  }
+  export type AvaliacaoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    order?: boolean | OrderDefaultArgs<ExtArgs>
+  }
+  export type AvaliacaoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    order?: boolean | OrderDefaultArgs<ExtArgs>
+  }
+
+  export type $AvaliacaoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Avaliacao"
+    objects: {
+      cliente: Prisma.$ClientePayload<ExtArgs>
+      order: Prisma.$OrderPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      nota: number
+      descricao: string
+      created_at: Date | null
+      cliente_id: string
+      order_id: string
+    }, ExtArgs["result"]["avaliacao"]>
+    composites: {}
+  }
+
+  type AvaliacaoGetPayload<S extends boolean | null | undefined | AvaliacaoDefaultArgs> = $Result.GetResult<Prisma.$AvaliacaoPayload, S>
+
+  type AvaliacaoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AvaliacaoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AvaliacaoCountAggregateInputType | true
+    }
+
+  export interface AvaliacaoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Avaliacao'], meta: { name: 'Avaliacao' } }
+    /**
+     * Find zero or one Avaliacao that matches the filter.
+     * @param {AvaliacaoFindUniqueArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AvaliacaoFindUniqueArgs>(args: SelectSubset<T, AvaliacaoFindUniqueArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Avaliacao that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AvaliacaoFindUniqueOrThrowArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AvaliacaoFindUniqueOrThrowArgs>(args: SelectSubset<T, AvaliacaoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Avaliacao that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoFindFirstArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AvaliacaoFindFirstArgs>(args?: SelectSubset<T, AvaliacaoFindFirstArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Avaliacao that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoFindFirstOrThrowArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AvaliacaoFindFirstOrThrowArgs>(args?: SelectSubset<T, AvaliacaoFindFirstOrThrowArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Avaliacaos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Avaliacaos
+     * const avaliacaos = await prisma.avaliacao.findMany()
+     * 
+     * // Get first 10 Avaliacaos
+     * const avaliacaos = await prisma.avaliacao.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const avaliacaoWithIdOnly = await prisma.avaliacao.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AvaliacaoFindManyArgs>(args?: SelectSubset<T, AvaliacaoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Avaliacao.
+     * @param {AvaliacaoCreateArgs} args - Arguments to create a Avaliacao.
+     * @example
+     * // Create one Avaliacao
+     * const Avaliacao = await prisma.avaliacao.create({
+     *   data: {
+     *     // ... data to create a Avaliacao
+     *   }
+     * })
+     * 
+     */
+    create<T extends AvaliacaoCreateArgs>(args: SelectSubset<T, AvaliacaoCreateArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Avaliacaos.
+     * @param {AvaliacaoCreateManyArgs} args - Arguments to create many Avaliacaos.
+     * @example
+     * // Create many Avaliacaos
+     * const avaliacao = await prisma.avaliacao.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AvaliacaoCreateManyArgs>(args?: SelectSubset<T, AvaliacaoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Avaliacaos and returns the data saved in the database.
+     * @param {AvaliacaoCreateManyAndReturnArgs} args - Arguments to create many Avaliacaos.
+     * @example
+     * // Create many Avaliacaos
+     * const avaliacao = await prisma.avaliacao.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Avaliacaos and only return the `id`
+     * const avaliacaoWithIdOnly = await prisma.avaliacao.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AvaliacaoCreateManyAndReturnArgs>(args?: SelectSubset<T, AvaliacaoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Avaliacao.
+     * @param {AvaliacaoDeleteArgs} args - Arguments to delete one Avaliacao.
+     * @example
+     * // Delete one Avaliacao
+     * const Avaliacao = await prisma.avaliacao.delete({
+     *   where: {
+     *     // ... filter to delete one Avaliacao
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AvaliacaoDeleteArgs>(args: SelectSubset<T, AvaliacaoDeleteArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Avaliacao.
+     * @param {AvaliacaoUpdateArgs} args - Arguments to update one Avaliacao.
+     * @example
+     * // Update one Avaliacao
+     * const avaliacao = await prisma.avaliacao.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AvaliacaoUpdateArgs>(args: SelectSubset<T, AvaliacaoUpdateArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Avaliacaos.
+     * @param {AvaliacaoDeleteManyArgs} args - Arguments to filter Avaliacaos to delete.
+     * @example
+     * // Delete a few Avaliacaos
+     * const { count } = await prisma.avaliacao.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AvaliacaoDeleteManyArgs>(args?: SelectSubset<T, AvaliacaoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Avaliacaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Avaliacaos
+     * const avaliacao = await prisma.avaliacao.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AvaliacaoUpdateManyArgs>(args: SelectSubset<T, AvaliacaoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Avaliacaos and returns the data updated in the database.
+     * @param {AvaliacaoUpdateManyAndReturnArgs} args - Arguments to update many Avaliacaos.
+     * @example
+     * // Update many Avaliacaos
+     * const avaliacao = await prisma.avaliacao.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Avaliacaos and only return the `id`
+     * const avaliacaoWithIdOnly = await prisma.avaliacao.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AvaliacaoUpdateManyAndReturnArgs>(args: SelectSubset<T, AvaliacaoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Avaliacao.
+     * @param {AvaliacaoUpsertArgs} args - Arguments to update or create a Avaliacao.
+     * @example
+     * // Update or create a Avaliacao
+     * const avaliacao = await prisma.avaliacao.upsert({
+     *   create: {
+     *     // ... data to create a Avaliacao
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Avaliacao we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AvaliacaoUpsertArgs>(args: SelectSubset<T, AvaliacaoUpsertArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Avaliacaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoCountArgs} args - Arguments to filter Avaliacaos to count.
+     * @example
+     * // Count the number of Avaliacaos
+     * const count = await prisma.avaliacao.count({
+     *   where: {
+     *     // ... the filter for the Avaliacaos we want to count
+     *   }
+     * })
+    **/
+    count<T extends AvaliacaoCountArgs>(
+      args?: Subset<T, AvaliacaoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AvaliacaoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Avaliacao.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AvaliacaoAggregateArgs>(args: Subset<T, AvaliacaoAggregateArgs>): Prisma.PrismaPromise<GetAvaliacaoAggregateType<T>>
+
+    /**
+     * Group by Avaliacao.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AvaliacaoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AvaliacaoGroupByArgs['orderBy'] }
+        : { orderBy?: AvaliacaoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AvaliacaoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAvaliacaoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Avaliacao model
+   */
+  readonly fields: AvaliacaoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Avaliacao.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AvaliacaoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    cliente<T extends ClienteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClienteDefaultArgs<ExtArgs>>): Prisma__ClienteClient<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    order<T extends OrderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrderDefaultArgs<ExtArgs>>): Prisma__OrderClient<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Avaliacao model
+   */
+  interface AvaliacaoFieldRefs {
+    readonly id: FieldRef<"Avaliacao", 'String'>
+    readonly nota: FieldRef<"Avaliacao", 'Int'>
+    readonly descricao: FieldRef<"Avaliacao", 'String'>
+    readonly created_at: FieldRef<"Avaliacao", 'DateTime'>
+    readonly cliente_id: FieldRef<"Avaliacao", 'String'>
+    readonly order_id: FieldRef<"Avaliacao", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Avaliacao findUnique
+   */
+  export type AvaliacaoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao findUniqueOrThrow
+   */
+  export type AvaliacaoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao findFirst
+   */
+  export type AvaliacaoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Avaliacaos.
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Avaliacaos.
+     */
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Avaliacao findFirstOrThrow
+   */
+  export type AvaliacaoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Avaliacaos.
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Avaliacaos.
+     */
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Avaliacao findMany
+   */
+  export type AvaliacaoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacaos to fetch.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Avaliacaos.
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Avaliacao create
+   */
+  export type AvaliacaoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Avaliacao.
+     */
+    data: XOR<AvaliacaoCreateInput, AvaliacaoUncheckedCreateInput>
+  }
+
+  /**
+   * Avaliacao createMany
+   */
+  export type AvaliacaoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Avaliacaos.
+     */
+    data: AvaliacaoCreateManyInput | AvaliacaoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Avaliacao createManyAndReturn
+   */
+  export type AvaliacaoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * The data used to create many Avaliacaos.
+     */
+    data: AvaliacaoCreateManyInput | AvaliacaoCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Avaliacao update
+   */
+  export type AvaliacaoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Avaliacao.
+     */
+    data: XOR<AvaliacaoUpdateInput, AvaliacaoUncheckedUpdateInput>
+    /**
+     * Choose, which Avaliacao to update.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao updateMany
+   */
+  export type AvaliacaoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Avaliacaos.
+     */
+    data: XOR<AvaliacaoUpdateManyMutationInput, AvaliacaoUncheckedUpdateManyInput>
+    /**
+     * Filter which Avaliacaos to update
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * Limit how many Avaliacaos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Avaliacao updateManyAndReturn
+   */
+  export type AvaliacaoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * The data used to update Avaliacaos.
+     */
+    data: XOR<AvaliacaoUpdateManyMutationInput, AvaliacaoUncheckedUpdateManyInput>
+    /**
+     * Filter which Avaliacaos to update
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * Limit how many Avaliacaos to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Avaliacao upsert
+   */
+  export type AvaliacaoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Avaliacao to update in case it exists.
+     */
+    where: AvaliacaoWhereUniqueInput
+    /**
+     * In case the Avaliacao found by the `where` argument doesn't exist, create a new Avaliacao with this data.
+     */
+    create: XOR<AvaliacaoCreateInput, AvaliacaoUncheckedCreateInput>
+    /**
+     * In case the Avaliacao was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AvaliacaoUpdateInput, AvaliacaoUncheckedUpdateInput>
+  }
+
+  /**
+   * Avaliacao delete
+   */
+  export type AvaliacaoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter which Avaliacao to delete.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao deleteMany
+   */
+  export type AvaliacaoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Avaliacaos to delete
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * Limit how many Avaliacaos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Avaliacao without action
+   */
+  export type AvaliacaoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
   }
 
 
@@ -6786,6 +10431,30 @@ export namespace Prisma {
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+  export const ClienteScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    password: 'password',
+    cpf: 'cpf',
+    data_nasc: 'data_nasc',
+    created_at: 'created_at',
+    update_at: 'update_at'
+  };
+
+  export type ClienteScalarFieldEnum = (typeof ClienteScalarFieldEnum)[keyof typeof ClienteScalarFieldEnum]
+
+
+  export const FavoritoScalarFieldEnum: {
+    id: 'id',
+    created_at: 'created_at',
+    update_at: 'update_at',
+    product_id: 'product_id'
+  };
+
+  export type FavoritoScalarFieldEnum = (typeof FavoritoScalarFieldEnum)[keyof typeof FavoritoScalarFieldEnum]
+
+
   export const CategoryScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -6821,6 +10490,18 @@ export namespace Prisma {
   };
 
   export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
+
+
+  export const AvaliacaoScalarFieldEnum: {
+    id: 'id',
+    nota: 'nota',
+    descricao: 'descricao',
+    created_at: 'created_at',
+    cliente_id: 'cliente_id',
+    order_id: 'order_id'
+  };
+
+  export type AvaliacaoScalarFieldEnum = (typeof AvaliacaoScalarFieldEnum)[keyof typeof AvaliacaoScalarFieldEnum]
 
 
   export const ItemScalarFieldEnum: {
@@ -6987,6 +10668,126 @@ export namespace Prisma {
     update_at?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   }
 
+  export type ClienteWhereInput = {
+    AND?: ClienteWhereInput | ClienteWhereInput[]
+    OR?: ClienteWhereInput[]
+    NOT?: ClienteWhereInput | ClienteWhereInput[]
+    id?: StringFilter<"Cliente"> | string
+    name?: StringFilter<"Cliente"> | string
+    email?: StringFilter<"Cliente"> | string
+    password?: StringFilter<"Cliente"> | string
+    cpf?: StringFilter<"Cliente"> | string
+    data_nasc?: DateTimeNullableFilter<"Cliente"> | Date | string | null
+    created_at?: DateTimeNullableFilter<"Cliente"> | Date | string | null
+    update_at?: DateTimeNullableFilter<"Cliente"> | Date | string | null
+    avaliacao?: AvaliacaoListRelationFilter
+  }
+
+  export type ClienteOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    cpf?: SortOrder
+    data_nasc?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    update_at?: SortOrderInput | SortOrder
+    avaliacao?: AvaliacaoOrderByRelationAggregateInput
+  }
+
+  export type ClienteWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ClienteWhereInput | ClienteWhereInput[]
+    OR?: ClienteWhereInput[]
+    NOT?: ClienteWhereInput | ClienteWhereInput[]
+    name?: StringFilter<"Cliente"> | string
+    email?: StringFilter<"Cliente"> | string
+    password?: StringFilter<"Cliente"> | string
+    cpf?: StringFilter<"Cliente"> | string
+    data_nasc?: DateTimeNullableFilter<"Cliente"> | Date | string | null
+    created_at?: DateTimeNullableFilter<"Cliente"> | Date | string | null
+    update_at?: DateTimeNullableFilter<"Cliente"> | Date | string | null
+    avaliacao?: AvaliacaoListRelationFilter
+  }, "id">
+
+  export type ClienteOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    cpf?: SortOrder
+    data_nasc?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    update_at?: SortOrderInput | SortOrder
+    _count?: ClienteCountOrderByAggregateInput
+    _max?: ClienteMaxOrderByAggregateInput
+    _min?: ClienteMinOrderByAggregateInput
+  }
+
+  export type ClienteScalarWhereWithAggregatesInput = {
+    AND?: ClienteScalarWhereWithAggregatesInput | ClienteScalarWhereWithAggregatesInput[]
+    OR?: ClienteScalarWhereWithAggregatesInput[]
+    NOT?: ClienteScalarWhereWithAggregatesInput | ClienteScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Cliente"> | string
+    name?: StringWithAggregatesFilter<"Cliente"> | string
+    email?: StringWithAggregatesFilter<"Cliente"> | string
+    password?: StringWithAggregatesFilter<"Cliente"> | string
+    cpf?: StringWithAggregatesFilter<"Cliente"> | string
+    data_nasc?: DateTimeNullableWithAggregatesFilter<"Cliente"> | Date | string | null
+    created_at?: DateTimeNullableWithAggregatesFilter<"Cliente"> | Date | string | null
+    update_at?: DateTimeNullableWithAggregatesFilter<"Cliente"> | Date | string | null
+  }
+
+  export type FavoritoWhereInput = {
+    AND?: FavoritoWhereInput | FavoritoWhereInput[]
+    OR?: FavoritoWhereInput[]
+    NOT?: FavoritoWhereInput | FavoritoWhereInput[]
+    id?: StringFilter<"Favorito"> | string
+    created_at?: DateTimeNullableFilter<"Favorito"> | Date | string | null
+    update_at?: DateTimeNullableFilter<"Favorito"> | Date | string | null
+    product_id?: StringFilter<"Favorito"> | string
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+  }
+
+  export type FavoritoOrderByWithRelationInput = {
+    id?: SortOrder
+    created_at?: SortOrderInput | SortOrder
+    update_at?: SortOrderInput | SortOrder
+    product_id?: SortOrder
+    product?: ProductOrderByWithRelationInput
+  }
+
+  export type FavoritoWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: FavoritoWhereInput | FavoritoWhereInput[]
+    OR?: FavoritoWhereInput[]
+    NOT?: FavoritoWhereInput | FavoritoWhereInput[]
+    created_at?: DateTimeNullableFilter<"Favorito"> | Date | string | null
+    update_at?: DateTimeNullableFilter<"Favorito"> | Date | string | null
+    product_id?: StringFilter<"Favorito"> | string
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+  }, "id">
+
+  export type FavoritoOrderByWithAggregationInput = {
+    id?: SortOrder
+    created_at?: SortOrderInput | SortOrder
+    update_at?: SortOrderInput | SortOrder
+    product_id?: SortOrder
+    _count?: FavoritoCountOrderByAggregateInput
+    _max?: FavoritoMaxOrderByAggregateInput
+    _min?: FavoritoMinOrderByAggregateInput
+  }
+
+  export type FavoritoScalarWhereWithAggregatesInput = {
+    AND?: FavoritoScalarWhereWithAggregatesInput | FavoritoScalarWhereWithAggregatesInput[]
+    OR?: FavoritoScalarWhereWithAggregatesInput[]
+    NOT?: FavoritoScalarWhereWithAggregatesInput | FavoritoScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Favorito"> | string
+    created_at?: DateTimeNullableWithAggregatesFilter<"Favorito"> | Date | string | null
+    update_at?: DateTimeNullableWithAggregatesFilter<"Favorito"> | Date | string | null
+    product_id?: StringWithAggregatesFilter<"Favorito"> | string
+  }
+
   export type CategoryWhereInput = {
     AND?: CategoryWhereInput | CategoryWhereInput[]
     OR?: CategoryWhereInput[]
@@ -7051,6 +10852,7 @@ export namespace Prisma {
     category_id?: StringFilter<"Product"> | string
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     items?: ItemListRelationFilter
+    favorito?: FavoritoListRelationFilter
   }
 
   export type ProductOrderByWithRelationInput = {
@@ -7064,6 +10866,7 @@ export namespace Prisma {
     category_id?: SortOrder
     category?: CategoryOrderByWithRelationInput
     items?: ItemOrderByRelationAggregateInput
+    favorito?: FavoritoOrderByRelationAggregateInput
   }
 
   export type ProductWhereUniqueInput = Prisma.AtLeast<{
@@ -7080,6 +10883,7 @@ export namespace Prisma {
     category_id?: StringFilter<"Product"> | string
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     items?: ItemListRelationFilter
+    favorito?: FavoritoListRelationFilter
   }, "id">
 
   export type ProductOrderByWithAggregationInput = {
@@ -7121,6 +10925,7 @@ export namespace Prisma {
     name?: StringNullableFilter<"Order"> | string | null
     created_at?: DateTimeNullableFilter<"Order"> | Date | string | null
     update_at?: DateTimeNullableFilter<"Order"> | Date | string | null
+    avaliacao?: AvaliacaoListRelationFilter
     items?: ItemListRelationFilter
   }
 
@@ -7132,6 +10937,7 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     created_at?: SortOrderInput | SortOrder
     update_at?: SortOrderInput | SortOrder
+    avaliacao?: AvaliacaoOrderByRelationAggregateInput
     items?: ItemOrderByRelationAggregateInput
   }
 
@@ -7146,6 +10952,7 @@ export namespace Prisma {
     name?: StringNullableFilter<"Order"> | string | null
     created_at?: DateTimeNullableFilter<"Order"> | Date | string | null
     update_at?: DateTimeNullableFilter<"Order"> | Date | string | null
+    avaliacao?: AvaliacaoListRelationFilter
     items?: ItemListRelationFilter
   }, "id">
 
@@ -7175,6 +10982,71 @@ export namespace Prisma {
     name?: StringNullableWithAggregatesFilter<"Order"> | string | null
     created_at?: DateTimeNullableWithAggregatesFilter<"Order"> | Date | string | null
     update_at?: DateTimeNullableWithAggregatesFilter<"Order"> | Date | string | null
+  }
+
+  export type AvaliacaoWhereInput = {
+    AND?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    OR?: AvaliacaoWhereInput[]
+    NOT?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    id?: StringFilter<"Avaliacao"> | string
+    nota?: IntFilter<"Avaliacao"> | number
+    descricao?: StringFilter<"Avaliacao"> | string
+    created_at?: DateTimeNullableFilter<"Avaliacao"> | Date | string | null
+    cliente_id?: StringFilter<"Avaliacao"> | string
+    order_id?: StringFilter<"Avaliacao"> | string
+    cliente?: XOR<ClienteScalarRelationFilter, ClienteWhereInput>
+    order?: XOR<OrderScalarRelationFilter, OrderWhereInput>
+  }
+
+  export type AvaliacaoOrderByWithRelationInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    descricao?: SortOrder
+    created_at?: SortOrderInput | SortOrder
+    cliente_id?: SortOrder
+    order_id?: SortOrder
+    cliente?: ClienteOrderByWithRelationInput
+    order?: OrderOrderByWithRelationInput
+  }
+
+  export type AvaliacaoWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    OR?: AvaliacaoWhereInput[]
+    NOT?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    nota?: IntFilter<"Avaliacao"> | number
+    descricao?: StringFilter<"Avaliacao"> | string
+    created_at?: DateTimeNullableFilter<"Avaliacao"> | Date | string | null
+    cliente_id?: StringFilter<"Avaliacao"> | string
+    order_id?: StringFilter<"Avaliacao"> | string
+    cliente?: XOR<ClienteScalarRelationFilter, ClienteWhereInput>
+    order?: XOR<OrderScalarRelationFilter, OrderWhereInput>
+  }, "id">
+
+  export type AvaliacaoOrderByWithAggregationInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    descricao?: SortOrder
+    created_at?: SortOrderInput | SortOrder
+    cliente_id?: SortOrder
+    order_id?: SortOrder
+    _count?: AvaliacaoCountOrderByAggregateInput
+    _avg?: AvaliacaoAvgOrderByAggregateInput
+    _max?: AvaliacaoMaxOrderByAggregateInput
+    _min?: AvaliacaoMinOrderByAggregateInput
+    _sum?: AvaliacaoSumOrderByAggregateInput
+  }
+
+  export type AvaliacaoScalarWhereWithAggregatesInput = {
+    AND?: AvaliacaoScalarWhereWithAggregatesInput | AvaliacaoScalarWhereWithAggregatesInput[]
+    OR?: AvaliacaoScalarWhereWithAggregatesInput[]
+    NOT?: AvaliacaoScalarWhereWithAggregatesInput | AvaliacaoScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Avaliacao"> | string
+    nota?: IntWithAggregatesFilter<"Avaliacao"> | number
+    descricao?: StringWithAggregatesFilter<"Avaliacao"> | string
+    created_at?: DateTimeNullableWithAggregatesFilter<"Avaliacao"> | Date | string | null
+    cliente_id?: StringWithAggregatesFilter<"Avaliacao"> | string
+    order_id?: StringWithAggregatesFilter<"Avaliacao"> | string
   }
 
   export type ItemWhereInput = {
@@ -7305,6 +11177,135 @@ export namespace Prisma {
     update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type ClienteCreateInput = {
+    id?: string
+    name: string
+    email: string
+    password: string
+    cpf: string
+    data_nasc?: Date | string | null
+    created_at?: Date | string | null
+    update_at?: Date | string | null
+    avaliacao?: AvaliacaoCreateNestedManyWithoutClienteInput
+  }
+
+  export type ClienteUncheckedCreateInput = {
+    id?: string
+    name: string
+    email: string
+    password: string
+    cpf: string
+    data_nasc?: Date | string | null
+    created_at?: Date | string | null
+    update_at?: Date | string | null
+    avaliacao?: AvaliacaoUncheckedCreateNestedManyWithoutClienteInput
+  }
+
+  export type ClienteUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    data_nasc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    avaliacao?: AvaliacaoUpdateManyWithoutClienteNestedInput
+  }
+
+  export type ClienteUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    data_nasc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    avaliacao?: AvaliacaoUncheckedUpdateManyWithoutClienteNestedInput
+  }
+
+  export type ClienteCreateManyInput = {
+    id?: string
+    name: string
+    email: string
+    password: string
+    cpf: string
+    data_nasc?: Date | string | null
+    created_at?: Date | string | null
+    update_at?: Date | string | null
+  }
+
+  export type ClienteUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    data_nasc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ClienteUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    data_nasc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FavoritoCreateInput = {
+    id?: string
+    created_at?: Date | string | null
+    update_at?: Date | string | null
+    product: ProductCreateNestedOneWithoutFavoritoInput
+  }
+
+  export type FavoritoUncheckedCreateInput = {
+    id?: string
+    created_at?: Date | string | null
+    update_at?: Date | string | null
+    product_id: string
+  }
+
+  export type FavoritoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    product?: ProductUpdateOneRequiredWithoutFavoritoNestedInput
+  }
+
+  export type FavoritoUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    product_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FavoritoCreateManyInput = {
+    id?: string
+    created_at?: Date | string | null
+    update_at?: Date | string | null
+    product_id: string
+  }
+
+  export type FavoritoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FavoritoUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    product_id?: StringFieldUpdateOperationsInput | string
+  }
+
   export type CategoryCreateInput = {
     id?: string
     name: string
@@ -7368,6 +11369,7 @@ export namespace Prisma {
     update_at?: Date | string | null
     category: CategoryCreateNestedOneWithoutProductsInput
     items?: ItemCreateNestedManyWithoutProductInput
+    favorito?: FavoritoCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateInput = {
@@ -7380,6 +11382,7 @@ export namespace Prisma {
     update_at?: Date | string | null
     category_id: string
     items?: ItemUncheckedCreateNestedManyWithoutProductInput
+    favorito?: FavoritoUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductUpdateInput = {
@@ -7392,6 +11395,7 @@ export namespace Prisma {
     update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
     items?: ItemUpdateManyWithoutProductNestedInput
+    favorito?: FavoritoUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateInput = {
@@ -7404,6 +11408,7 @@ export namespace Prisma {
     update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     category_id?: StringFieldUpdateOperationsInput | string
     items?: ItemUncheckedUpdateManyWithoutProductNestedInput
+    favorito?: FavoritoUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductCreateManyInput = {
@@ -7446,6 +11451,7 @@ export namespace Prisma {
     name?: string | null
     created_at?: Date | string | null
     update_at?: Date | string | null
+    avaliacao?: AvaliacaoCreateNestedManyWithoutOrderInput
     items?: ItemCreateNestedManyWithoutOrderInput
   }
 
@@ -7457,6 +11463,7 @@ export namespace Prisma {
     name?: string | null
     created_at?: Date | string | null
     update_at?: Date | string | null
+    avaliacao?: AvaliacaoUncheckedCreateNestedManyWithoutOrderInput
     items?: ItemUncheckedCreateNestedManyWithoutOrderInput
   }
 
@@ -7468,6 +11475,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    avaliacao?: AvaliacaoUpdateManyWithoutOrderNestedInput
     items?: ItemUpdateManyWithoutOrderNestedInput
   }
 
@@ -7479,6 +11487,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    avaliacao?: AvaliacaoUncheckedUpdateManyWithoutOrderNestedInput
     items?: ItemUncheckedUpdateManyWithoutOrderNestedInput
   }
 
@@ -7510,6 +11519,67 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type AvaliacaoCreateInput = {
+    id?: string
+    nota: number
+    descricao: string
+    created_at?: Date | string | null
+    cliente: ClienteCreateNestedOneWithoutAvaliacaoInput
+    order: OrderCreateNestedOneWithoutAvaliacaoInput
+  }
+
+  export type AvaliacaoUncheckedCreateInput = {
+    id?: string
+    nota: number
+    descricao: string
+    created_at?: Date | string | null
+    cliente_id: string
+    order_id: string
+  }
+
+  export type AvaliacaoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cliente?: ClienteUpdateOneRequiredWithoutAvaliacaoNestedInput
+    order?: OrderUpdateOneRequiredWithoutAvaliacaoNestedInput
+  }
+
+  export type AvaliacaoUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cliente_id?: StringFieldUpdateOperationsInput | string
+    order_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AvaliacaoCreateManyInput = {
+    id?: string
+    nota: number
+    descricao: string
+    created_at?: Date | string | null
+    cliente_id: string
+    order_id: string
+  }
+
+  export type AvaliacaoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type AvaliacaoUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cliente_id?: StringFieldUpdateOperationsInput | string
+    order_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type ItemCreateInput = {
@@ -7663,6 +11733,75 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type AvaliacaoListRelationFilter = {
+    every?: AvaliacaoWhereInput
+    some?: AvaliacaoWhereInput
+    none?: AvaliacaoWhereInput
+  }
+
+  export type AvaliacaoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ClienteCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    cpf?: SortOrder
+    data_nasc?: SortOrder
+    created_at?: SortOrder
+    update_at?: SortOrder
+  }
+
+  export type ClienteMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    cpf?: SortOrder
+    data_nasc?: SortOrder
+    created_at?: SortOrder
+    update_at?: SortOrder
+  }
+
+  export type ClienteMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    cpf?: SortOrder
+    data_nasc?: SortOrder
+    created_at?: SortOrder
+    update_at?: SortOrder
+  }
+
+  export type ProductScalarRelationFilter = {
+    is?: ProductWhereInput
+    isNot?: ProductWhereInput
+  }
+
+  export type FavoritoCountOrderByAggregateInput = {
+    id?: SortOrder
+    created_at?: SortOrder
+    update_at?: SortOrder
+    product_id?: SortOrder
+  }
+
+  export type FavoritoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    created_at?: SortOrder
+    update_at?: SortOrder
+    product_id?: SortOrder
+  }
+
+  export type FavoritoMinOrderByAggregateInput = {
+    id?: SortOrder
+    created_at?: SortOrder
+    update_at?: SortOrder
+    product_id?: SortOrder
+  }
+
   export type ProductListRelationFilter = {
     every?: ProductWhereInput
     some?: ProductWhereInput
@@ -7705,7 +11844,17 @@ export namespace Prisma {
     none?: ItemWhereInput
   }
 
+  export type FavoritoListRelationFilter = {
+    every?: FavoritoWhereInput
+    some?: FavoritoWhereInput
+    none?: FavoritoWhereInput
+  }
+
   export type ItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type FavoritoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -7853,14 +12002,49 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type ClienteScalarRelationFilter = {
+    is?: ClienteWhereInput
+    isNot?: ClienteWhereInput
+  }
+
   export type OrderScalarRelationFilter = {
     is?: OrderWhereInput
     isNot?: OrderWhereInput
   }
 
-  export type ProductScalarRelationFilter = {
-    is?: ProductWhereInput
-    isNot?: ProductWhereInput
+  export type AvaliacaoCountOrderByAggregateInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    descricao?: SortOrder
+    created_at?: SortOrder
+    cliente_id?: SortOrder
+    order_id?: SortOrder
+  }
+
+  export type AvaliacaoAvgOrderByAggregateInput = {
+    nota?: SortOrder
+  }
+
+  export type AvaliacaoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    descricao?: SortOrder
+    created_at?: SortOrder
+    cliente_id?: SortOrder
+    order_id?: SortOrder
+  }
+
+  export type AvaliacaoMinOrderByAggregateInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    descricao?: SortOrder
+    created_at?: SortOrder
+    cliente_id?: SortOrder
+    order_id?: SortOrder
+  }
+
+  export type AvaliacaoSumOrderByAggregateInput = {
+    nota?: SortOrder
   }
 
   export type ItemCountOrderByAggregateInput = {
@@ -7904,6 +12088,62 @@ export namespace Prisma {
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
+  }
+
+  export type AvaliacaoCreateNestedManyWithoutClienteInput = {
+    create?: XOR<AvaliacaoCreateWithoutClienteInput, AvaliacaoUncheckedCreateWithoutClienteInput> | AvaliacaoCreateWithoutClienteInput[] | AvaliacaoUncheckedCreateWithoutClienteInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutClienteInput | AvaliacaoCreateOrConnectWithoutClienteInput[]
+    createMany?: AvaliacaoCreateManyClienteInputEnvelope
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+  }
+
+  export type AvaliacaoUncheckedCreateNestedManyWithoutClienteInput = {
+    create?: XOR<AvaliacaoCreateWithoutClienteInput, AvaliacaoUncheckedCreateWithoutClienteInput> | AvaliacaoCreateWithoutClienteInput[] | AvaliacaoUncheckedCreateWithoutClienteInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutClienteInput | AvaliacaoCreateOrConnectWithoutClienteInput[]
+    createMany?: AvaliacaoCreateManyClienteInputEnvelope
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+  }
+
+  export type AvaliacaoUpdateManyWithoutClienteNestedInput = {
+    create?: XOR<AvaliacaoCreateWithoutClienteInput, AvaliacaoUncheckedCreateWithoutClienteInput> | AvaliacaoCreateWithoutClienteInput[] | AvaliacaoUncheckedCreateWithoutClienteInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutClienteInput | AvaliacaoCreateOrConnectWithoutClienteInput[]
+    upsert?: AvaliacaoUpsertWithWhereUniqueWithoutClienteInput | AvaliacaoUpsertWithWhereUniqueWithoutClienteInput[]
+    createMany?: AvaliacaoCreateManyClienteInputEnvelope
+    set?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    disconnect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    delete?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    update?: AvaliacaoUpdateWithWhereUniqueWithoutClienteInput | AvaliacaoUpdateWithWhereUniqueWithoutClienteInput[]
+    updateMany?: AvaliacaoUpdateManyWithWhereWithoutClienteInput | AvaliacaoUpdateManyWithWhereWithoutClienteInput[]
+    deleteMany?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+  }
+
+  export type AvaliacaoUncheckedUpdateManyWithoutClienteNestedInput = {
+    create?: XOR<AvaliacaoCreateWithoutClienteInput, AvaliacaoUncheckedCreateWithoutClienteInput> | AvaliacaoCreateWithoutClienteInput[] | AvaliacaoUncheckedCreateWithoutClienteInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutClienteInput | AvaliacaoCreateOrConnectWithoutClienteInput[]
+    upsert?: AvaliacaoUpsertWithWhereUniqueWithoutClienteInput | AvaliacaoUpsertWithWhereUniqueWithoutClienteInput[]
+    createMany?: AvaliacaoCreateManyClienteInputEnvelope
+    set?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    disconnect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    delete?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    update?: AvaliacaoUpdateWithWhereUniqueWithoutClienteInput | AvaliacaoUpdateWithWhereUniqueWithoutClienteInput[]
+    updateMany?: AvaliacaoUpdateManyWithWhereWithoutClienteInput | AvaliacaoUpdateManyWithWhereWithoutClienteInput[]
+    deleteMany?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+  }
+
+  export type ProductCreateNestedOneWithoutFavoritoInput = {
+    create?: XOR<ProductCreateWithoutFavoritoInput, ProductUncheckedCreateWithoutFavoritoInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutFavoritoInput
+    connect?: ProductWhereUniqueInput
+  }
+
+  export type ProductUpdateOneRequiredWithoutFavoritoNestedInput = {
+    create?: XOR<ProductCreateWithoutFavoritoInput, ProductUncheckedCreateWithoutFavoritoInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutFavoritoInput
+    upsert?: ProductUpsertWithoutFavoritoInput
+    connect?: ProductWhereUniqueInput
+    update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutFavoritoInput, ProductUpdateWithoutFavoritoInput>, ProductUncheckedUpdateWithoutFavoritoInput>
   }
 
   export type ProductCreateNestedManyWithoutCategoryInput = {
@@ -7961,11 +12201,25 @@ export namespace Prisma {
     connect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
   }
 
+  export type FavoritoCreateNestedManyWithoutProductInput = {
+    create?: XOR<FavoritoCreateWithoutProductInput, FavoritoUncheckedCreateWithoutProductInput> | FavoritoCreateWithoutProductInput[] | FavoritoUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutProductInput | FavoritoCreateOrConnectWithoutProductInput[]
+    createMany?: FavoritoCreateManyProductInputEnvelope
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+  }
+
   export type ItemUncheckedCreateNestedManyWithoutProductInput = {
     create?: XOR<ItemCreateWithoutProductInput, ItemUncheckedCreateWithoutProductInput> | ItemCreateWithoutProductInput[] | ItemUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ItemCreateOrConnectWithoutProductInput | ItemCreateOrConnectWithoutProductInput[]
     createMany?: ItemCreateManyProductInputEnvelope
     connect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+  }
+
+  export type FavoritoUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<FavoritoCreateWithoutProductInput, FavoritoUncheckedCreateWithoutProductInput> | FavoritoCreateWithoutProductInput[] | FavoritoUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutProductInput | FavoritoCreateOrConnectWithoutProductInput[]
+    createMany?: FavoritoCreateManyProductInputEnvelope
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
   }
 
   export type CategoryUpdateOneRequiredWithoutProductsNestedInput = {
@@ -7990,6 +12244,20 @@ export namespace Prisma {
     deleteMany?: ItemScalarWhereInput | ItemScalarWhereInput[]
   }
 
+  export type FavoritoUpdateManyWithoutProductNestedInput = {
+    create?: XOR<FavoritoCreateWithoutProductInput, FavoritoUncheckedCreateWithoutProductInput> | FavoritoCreateWithoutProductInput[] | FavoritoUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutProductInput | FavoritoCreateOrConnectWithoutProductInput[]
+    upsert?: FavoritoUpsertWithWhereUniqueWithoutProductInput | FavoritoUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: FavoritoCreateManyProductInputEnvelope
+    set?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    disconnect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    delete?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    update?: FavoritoUpdateWithWhereUniqueWithoutProductInput | FavoritoUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: FavoritoUpdateManyWithWhereWithoutProductInput | FavoritoUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
+  }
+
   export type ItemUncheckedUpdateManyWithoutProductNestedInput = {
     create?: XOR<ItemCreateWithoutProductInput, ItemUncheckedCreateWithoutProductInput> | ItemCreateWithoutProductInput[] | ItemUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ItemCreateOrConnectWithoutProductInput | ItemCreateOrConnectWithoutProductInput[]
@@ -8004,11 +12272,39 @@ export namespace Prisma {
     deleteMany?: ItemScalarWhereInput | ItemScalarWhereInput[]
   }
 
+  export type FavoritoUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<FavoritoCreateWithoutProductInput, FavoritoUncheckedCreateWithoutProductInput> | FavoritoCreateWithoutProductInput[] | FavoritoUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutProductInput | FavoritoCreateOrConnectWithoutProductInput[]
+    upsert?: FavoritoUpsertWithWhereUniqueWithoutProductInput | FavoritoUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: FavoritoCreateManyProductInputEnvelope
+    set?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    disconnect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    delete?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    update?: FavoritoUpdateWithWhereUniqueWithoutProductInput | FavoritoUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: FavoritoUpdateManyWithWhereWithoutProductInput | FavoritoUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
+  }
+
+  export type AvaliacaoCreateNestedManyWithoutOrderInput = {
+    create?: XOR<AvaliacaoCreateWithoutOrderInput, AvaliacaoUncheckedCreateWithoutOrderInput> | AvaliacaoCreateWithoutOrderInput[] | AvaliacaoUncheckedCreateWithoutOrderInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutOrderInput | AvaliacaoCreateOrConnectWithoutOrderInput[]
+    createMany?: AvaliacaoCreateManyOrderInputEnvelope
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+  }
+
   export type ItemCreateNestedManyWithoutOrderInput = {
     create?: XOR<ItemCreateWithoutOrderInput, ItemUncheckedCreateWithoutOrderInput> | ItemCreateWithoutOrderInput[] | ItemUncheckedCreateWithoutOrderInput[]
     connectOrCreate?: ItemCreateOrConnectWithoutOrderInput | ItemCreateOrConnectWithoutOrderInput[]
     createMany?: ItemCreateManyOrderInputEnvelope
     connect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+  }
+
+  export type AvaliacaoUncheckedCreateNestedManyWithoutOrderInput = {
+    create?: XOR<AvaliacaoCreateWithoutOrderInput, AvaliacaoUncheckedCreateWithoutOrderInput> | AvaliacaoCreateWithoutOrderInput[] | AvaliacaoUncheckedCreateWithoutOrderInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutOrderInput | AvaliacaoCreateOrConnectWithoutOrderInput[]
+    createMany?: AvaliacaoCreateManyOrderInputEnvelope
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
   }
 
   export type ItemUncheckedCreateNestedManyWithoutOrderInput = {
@@ -8034,6 +12330,20 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type AvaliacaoUpdateManyWithoutOrderNestedInput = {
+    create?: XOR<AvaliacaoCreateWithoutOrderInput, AvaliacaoUncheckedCreateWithoutOrderInput> | AvaliacaoCreateWithoutOrderInput[] | AvaliacaoUncheckedCreateWithoutOrderInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutOrderInput | AvaliacaoCreateOrConnectWithoutOrderInput[]
+    upsert?: AvaliacaoUpsertWithWhereUniqueWithoutOrderInput | AvaliacaoUpsertWithWhereUniqueWithoutOrderInput[]
+    createMany?: AvaliacaoCreateManyOrderInputEnvelope
+    set?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    disconnect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    delete?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    update?: AvaliacaoUpdateWithWhereUniqueWithoutOrderInput | AvaliacaoUpdateWithWhereUniqueWithoutOrderInput[]
+    updateMany?: AvaliacaoUpdateManyWithWhereWithoutOrderInput | AvaliacaoUpdateManyWithWhereWithoutOrderInput[]
+    deleteMany?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+  }
+
   export type ItemUpdateManyWithoutOrderNestedInput = {
     create?: XOR<ItemCreateWithoutOrderInput, ItemUncheckedCreateWithoutOrderInput> | ItemCreateWithoutOrderInput[] | ItemUncheckedCreateWithoutOrderInput[]
     connectOrCreate?: ItemCreateOrConnectWithoutOrderInput | ItemCreateOrConnectWithoutOrderInput[]
@@ -8048,6 +12358,20 @@ export namespace Prisma {
     deleteMany?: ItemScalarWhereInput | ItemScalarWhereInput[]
   }
 
+  export type AvaliacaoUncheckedUpdateManyWithoutOrderNestedInput = {
+    create?: XOR<AvaliacaoCreateWithoutOrderInput, AvaliacaoUncheckedCreateWithoutOrderInput> | AvaliacaoCreateWithoutOrderInput[] | AvaliacaoUncheckedCreateWithoutOrderInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutOrderInput | AvaliacaoCreateOrConnectWithoutOrderInput[]
+    upsert?: AvaliacaoUpsertWithWhereUniqueWithoutOrderInput | AvaliacaoUpsertWithWhereUniqueWithoutOrderInput[]
+    createMany?: AvaliacaoCreateManyOrderInputEnvelope
+    set?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    disconnect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    delete?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    update?: AvaliacaoUpdateWithWhereUniqueWithoutOrderInput | AvaliacaoUpdateWithWhereUniqueWithoutOrderInput[]
+    updateMany?: AvaliacaoUpdateManyWithWhereWithoutOrderInput | AvaliacaoUpdateManyWithWhereWithoutOrderInput[]
+    deleteMany?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+  }
+
   export type ItemUncheckedUpdateManyWithoutOrderNestedInput = {
     create?: XOR<ItemCreateWithoutOrderInput, ItemUncheckedCreateWithoutOrderInput> | ItemCreateWithoutOrderInput[] | ItemUncheckedCreateWithoutOrderInput[]
     connectOrCreate?: ItemCreateOrConnectWithoutOrderInput | ItemCreateOrConnectWithoutOrderInput[]
@@ -8060,6 +12384,34 @@ export namespace Prisma {
     update?: ItemUpdateWithWhereUniqueWithoutOrderInput | ItemUpdateWithWhereUniqueWithoutOrderInput[]
     updateMany?: ItemUpdateManyWithWhereWithoutOrderInput | ItemUpdateManyWithWhereWithoutOrderInput[]
     deleteMany?: ItemScalarWhereInput | ItemScalarWhereInput[]
+  }
+
+  export type ClienteCreateNestedOneWithoutAvaliacaoInput = {
+    create?: XOR<ClienteCreateWithoutAvaliacaoInput, ClienteUncheckedCreateWithoutAvaliacaoInput>
+    connectOrCreate?: ClienteCreateOrConnectWithoutAvaliacaoInput
+    connect?: ClienteWhereUniqueInput
+  }
+
+  export type OrderCreateNestedOneWithoutAvaliacaoInput = {
+    create?: XOR<OrderCreateWithoutAvaliacaoInput, OrderUncheckedCreateWithoutAvaliacaoInput>
+    connectOrCreate?: OrderCreateOrConnectWithoutAvaliacaoInput
+    connect?: OrderWhereUniqueInput
+  }
+
+  export type ClienteUpdateOneRequiredWithoutAvaliacaoNestedInput = {
+    create?: XOR<ClienteCreateWithoutAvaliacaoInput, ClienteUncheckedCreateWithoutAvaliacaoInput>
+    connectOrCreate?: ClienteCreateOrConnectWithoutAvaliacaoInput
+    upsert?: ClienteUpsertWithoutAvaliacaoInput
+    connect?: ClienteWhereUniqueInput
+    update?: XOR<XOR<ClienteUpdateToOneWithWhereWithoutAvaliacaoInput, ClienteUpdateWithoutAvaliacaoInput>, ClienteUncheckedUpdateWithoutAvaliacaoInput>
+  }
+
+  export type OrderUpdateOneRequiredWithoutAvaliacaoNestedInput = {
+    create?: XOR<OrderCreateWithoutAvaliacaoInput, OrderUncheckedCreateWithoutAvaliacaoInput>
+    connectOrCreate?: OrderCreateOrConnectWithoutAvaliacaoInput
+    upsert?: OrderUpsertWithoutAvaliacaoInput
+    connect?: OrderWhereUniqueInput
+    update?: XOR<XOR<OrderUpdateToOneWithWhereWithoutAvaliacaoInput, OrderUpdateWithoutAvaliacaoInput>, OrderUncheckedUpdateWithoutAvaliacaoInput>
   }
 
   export type OrderCreateNestedOneWithoutItemsInput = {
@@ -8239,6 +12591,124 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type AvaliacaoCreateWithoutClienteInput = {
+    id?: string
+    nota: number
+    descricao: string
+    created_at?: Date | string | null
+    order: OrderCreateNestedOneWithoutAvaliacaoInput
+  }
+
+  export type AvaliacaoUncheckedCreateWithoutClienteInput = {
+    id?: string
+    nota: number
+    descricao: string
+    created_at?: Date | string | null
+    order_id: string
+  }
+
+  export type AvaliacaoCreateOrConnectWithoutClienteInput = {
+    where: AvaliacaoWhereUniqueInput
+    create: XOR<AvaliacaoCreateWithoutClienteInput, AvaliacaoUncheckedCreateWithoutClienteInput>
+  }
+
+  export type AvaliacaoCreateManyClienteInputEnvelope = {
+    data: AvaliacaoCreateManyClienteInput | AvaliacaoCreateManyClienteInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AvaliacaoUpsertWithWhereUniqueWithoutClienteInput = {
+    where: AvaliacaoWhereUniqueInput
+    update: XOR<AvaliacaoUpdateWithoutClienteInput, AvaliacaoUncheckedUpdateWithoutClienteInput>
+    create: XOR<AvaliacaoCreateWithoutClienteInput, AvaliacaoUncheckedCreateWithoutClienteInput>
+  }
+
+  export type AvaliacaoUpdateWithWhereUniqueWithoutClienteInput = {
+    where: AvaliacaoWhereUniqueInput
+    data: XOR<AvaliacaoUpdateWithoutClienteInput, AvaliacaoUncheckedUpdateWithoutClienteInput>
+  }
+
+  export type AvaliacaoUpdateManyWithWhereWithoutClienteInput = {
+    where: AvaliacaoScalarWhereInput
+    data: XOR<AvaliacaoUpdateManyMutationInput, AvaliacaoUncheckedUpdateManyWithoutClienteInput>
+  }
+
+  export type AvaliacaoScalarWhereInput = {
+    AND?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+    OR?: AvaliacaoScalarWhereInput[]
+    NOT?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+    id?: StringFilter<"Avaliacao"> | string
+    nota?: IntFilter<"Avaliacao"> | number
+    descricao?: StringFilter<"Avaliacao"> | string
+    created_at?: DateTimeNullableFilter<"Avaliacao"> | Date | string | null
+    cliente_id?: StringFilter<"Avaliacao"> | string
+    order_id?: StringFilter<"Avaliacao"> | string
+  }
+
+  export type ProductCreateWithoutFavoritoInput = {
+    id?: string
+    name: string
+    price: string
+    description: string
+    banner: string
+    created_at?: Date | string | null
+    update_at?: Date | string | null
+    category: CategoryCreateNestedOneWithoutProductsInput
+    items?: ItemCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductUncheckedCreateWithoutFavoritoInput = {
+    id?: string
+    name: string
+    price: string
+    description: string
+    banner: string
+    created_at?: Date | string | null
+    update_at?: Date | string | null
+    category_id: string
+    items?: ItemUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductCreateOrConnectWithoutFavoritoInput = {
+    where: ProductWhereUniqueInput
+    create: XOR<ProductCreateWithoutFavoritoInput, ProductUncheckedCreateWithoutFavoritoInput>
+  }
+
+  export type ProductUpsertWithoutFavoritoInput = {
+    update: XOR<ProductUpdateWithoutFavoritoInput, ProductUncheckedUpdateWithoutFavoritoInput>
+    create: XOR<ProductCreateWithoutFavoritoInput, ProductUncheckedCreateWithoutFavoritoInput>
+    where?: ProductWhereInput
+  }
+
+  export type ProductUpdateToOneWithWhereWithoutFavoritoInput = {
+    where?: ProductWhereInput
+    data: XOR<ProductUpdateWithoutFavoritoInput, ProductUncheckedUpdateWithoutFavoritoInput>
+  }
+
+  export type ProductUpdateWithoutFavoritoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    banner?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
+    items?: ItemUpdateManyWithoutProductNestedInput
+  }
+
+  export type ProductUncheckedUpdateWithoutFavoritoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    banner?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    category_id?: StringFieldUpdateOperationsInput | string
+    items?: ItemUncheckedUpdateManyWithoutProductNestedInput
+  }
+
   export type ProductCreateWithoutCategoryInput = {
     id?: string
     name: string
@@ -8248,6 +12718,7 @@ export namespace Prisma {
     created_at?: Date | string | null
     update_at?: Date | string | null
     items?: ItemCreateNestedManyWithoutProductInput
+    favorito?: FavoritoCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutCategoryInput = {
@@ -8259,6 +12730,7 @@ export namespace Prisma {
     created_at?: Date | string | null
     update_at?: Date | string | null
     items?: ItemUncheckedCreateNestedManyWithoutProductInput
+    favorito?: FavoritoUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutCategoryInput = {
@@ -8346,6 +12818,28 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type FavoritoCreateWithoutProductInput = {
+    id?: string
+    created_at?: Date | string | null
+    update_at?: Date | string | null
+  }
+
+  export type FavoritoUncheckedCreateWithoutProductInput = {
+    id?: string
+    created_at?: Date | string | null
+    update_at?: Date | string | null
+  }
+
+  export type FavoritoCreateOrConnectWithoutProductInput = {
+    where: FavoritoWhereUniqueInput
+    create: XOR<FavoritoCreateWithoutProductInput, FavoritoUncheckedCreateWithoutProductInput>
+  }
+
+  export type FavoritoCreateManyProductInputEnvelope = {
+    data: FavoritoCreateManyProductInput | FavoritoCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CategoryUpsertWithoutProductsInput = {
     update: XOR<CategoryUpdateWithoutProductsInput, CategoryUncheckedUpdateWithoutProductsInput>
     create: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
@@ -8399,6 +12893,58 @@ export namespace Prisma {
     product_id?: StringFilter<"Item"> | string
   }
 
+  export type FavoritoUpsertWithWhereUniqueWithoutProductInput = {
+    where: FavoritoWhereUniqueInput
+    update: XOR<FavoritoUpdateWithoutProductInput, FavoritoUncheckedUpdateWithoutProductInput>
+    create: XOR<FavoritoCreateWithoutProductInput, FavoritoUncheckedCreateWithoutProductInput>
+  }
+
+  export type FavoritoUpdateWithWhereUniqueWithoutProductInput = {
+    where: FavoritoWhereUniqueInput
+    data: XOR<FavoritoUpdateWithoutProductInput, FavoritoUncheckedUpdateWithoutProductInput>
+  }
+
+  export type FavoritoUpdateManyWithWhereWithoutProductInput = {
+    where: FavoritoScalarWhereInput
+    data: XOR<FavoritoUpdateManyMutationInput, FavoritoUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type FavoritoScalarWhereInput = {
+    AND?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
+    OR?: FavoritoScalarWhereInput[]
+    NOT?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
+    id?: StringFilter<"Favorito"> | string
+    created_at?: DateTimeNullableFilter<"Favorito"> | Date | string | null
+    update_at?: DateTimeNullableFilter<"Favorito"> | Date | string | null
+    product_id?: StringFilter<"Favorito"> | string
+  }
+
+  export type AvaliacaoCreateWithoutOrderInput = {
+    id?: string
+    nota: number
+    descricao: string
+    created_at?: Date | string | null
+    cliente: ClienteCreateNestedOneWithoutAvaliacaoInput
+  }
+
+  export type AvaliacaoUncheckedCreateWithoutOrderInput = {
+    id?: string
+    nota: number
+    descricao: string
+    created_at?: Date | string | null
+    cliente_id: string
+  }
+
+  export type AvaliacaoCreateOrConnectWithoutOrderInput = {
+    where: AvaliacaoWhereUniqueInput
+    create: XOR<AvaliacaoCreateWithoutOrderInput, AvaliacaoUncheckedCreateWithoutOrderInput>
+  }
+
+  export type AvaliacaoCreateManyOrderInputEnvelope = {
+    data: AvaliacaoCreateManyOrderInput | AvaliacaoCreateManyOrderInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ItemCreateWithoutOrderInput = {
     id?: string
     amount: number
@@ -8425,6 +12971,22 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type AvaliacaoUpsertWithWhereUniqueWithoutOrderInput = {
+    where: AvaliacaoWhereUniqueInput
+    update: XOR<AvaliacaoUpdateWithoutOrderInput, AvaliacaoUncheckedUpdateWithoutOrderInput>
+    create: XOR<AvaliacaoCreateWithoutOrderInput, AvaliacaoUncheckedCreateWithoutOrderInput>
+  }
+
+  export type AvaliacaoUpdateWithWhereUniqueWithoutOrderInput = {
+    where: AvaliacaoWhereUniqueInput
+    data: XOR<AvaliacaoUpdateWithoutOrderInput, AvaliacaoUncheckedUpdateWithoutOrderInput>
+  }
+
+  export type AvaliacaoUpdateManyWithWhereWithoutOrderInput = {
+    where: AvaliacaoScalarWhereInput
+    data: XOR<AvaliacaoUpdateManyMutationInput, AvaliacaoUncheckedUpdateManyWithoutOrderInput>
+  }
+
   export type ItemUpsertWithWhereUniqueWithoutOrderInput = {
     where: ItemWhereUniqueInput
     update: XOR<ItemUpdateWithoutOrderInput, ItemUncheckedUpdateWithoutOrderInput>
@@ -8441,6 +13003,126 @@ export namespace Prisma {
     data: XOR<ItemUpdateManyMutationInput, ItemUncheckedUpdateManyWithoutOrderInput>
   }
 
+  export type ClienteCreateWithoutAvaliacaoInput = {
+    id?: string
+    name: string
+    email: string
+    password: string
+    cpf: string
+    data_nasc?: Date | string | null
+    created_at?: Date | string | null
+    update_at?: Date | string | null
+  }
+
+  export type ClienteUncheckedCreateWithoutAvaliacaoInput = {
+    id?: string
+    name: string
+    email: string
+    password: string
+    cpf: string
+    data_nasc?: Date | string | null
+    created_at?: Date | string | null
+    update_at?: Date | string | null
+  }
+
+  export type ClienteCreateOrConnectWithoutAvaliacaoInput = {
+    where: ClienteWhereUniqueInput
+    create: XOR<ClienteCreateWithoutAvaliacaoInput, ClienteUncheckedCreateWithoutAvaliacaoInput>
+  }
+
+  export type OrderCreateWithoutAvaliacaoInput = {
+    id?: string
+    table: number
+    status?: boolean
+    draft?: boolean
+    name?: string | null
+    created_at?: Date | string | null
+    update_at?: Date | string | null
+    items?: ItemCreateNestedManyWithoutOrderInput
+  }
+
+  export type OrderUncheckedCreateWithoutAvaliacaoInput = {
+    id?: string
+    table: number
+    status?: boolean
+    draft?: boolean
+    name?: string | null
+    created_at?: Date | string | null
+    update_at?: Date | string | null
+    items?: ItemUncheckedCreateNestedManyWithoutOrderInput
+  }
+
+  export type OrderCreateOrConnectWithoutAvaliacaoInput = {
+    where: OrderWhereUniqueInput
+    create: XOR<OrderCreateWithoutAvaliacaoInput, OrderUncheckedCreateWithoutAvaliacaoInput>
+  }
+
+  export type ClienteUpsertWithoutAvaliacaoInput = {
+    update: XOR<ClienteUpdateWithoutAvaliacaoInput, ClienteUncheckedUpdateWithoutAvaliacaoInput>
+    create: XOR<ClienteCreateWithoutAvaliacaoInput, ClienteUncheckedCreateWithoutAvaliacaoInput>
+    where?: ClienteWhereInput
+  }
+
+  export type ClienteUpdateToOneWithWhereWithoutAvaliacaoInput = {
+    where?: ClienteWhereInput
+    data: XOR<ClienteUpdateWithoutAvaliacaoInput, ClienteUncheckedUpdateWithoutAvaliacaoInput>
+  }
+
+  export type ClienteUpdateWithoutAvaliacaoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    data_nasc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ClienteUncheckedUpdateWithoutAvaliacaoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    data_nasc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type OrderUpsertWithoutAvaliacaoInput = {
+    update: XOR<OrderUpdateWithoutAvaliacaoInput, OrderUncheckedUpdateWithoutAvaliacaoInput>
+    create: XOR<OrderCreateWithoutAvaliacaoInput, OrderUncheckedCreateWithoutAvaliacaoInput>
+    where?: OrderWhereInput
+  }
+
+  export type OrderUpdateToOneWithWhereWithoutAvaliacaoInput = {
+    where?: OrderWhereInput
+    data: XOR<OrderUpdateWithoutAvaliacaoInput, OrderUncheckedUpdateWithoutAvaliacaoInput>
+  }
+
+  export type OrderUpdateWithoutAvaliacaoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    table?: IntFieldUpdateOperationsInput | number
+    status?: BoolFieldUpdateOperationsInput | boolean
+    draft?: BoolFieldUpdateOperationsInput | boolean
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    items?: ItemUpdateManyWithoutOrderNestedInput
+  }
+
+  export type OrderUncheckedUpdateWithoutAvaliacaoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    table?: IntFieldUpdateOperationsInput | number
+    status?: BoolFieldUpdateOperationsInput | boolean
+    draft?: BoolFieldUpdateOperationsInput | boolean
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    items?: ItemUncheckedUpdateManyWithoutOrderNestedInput
+  }
+
   export type OrderCreateWithoutItemsInput = {
     id?: string
     table: number
@@ -8449,6 +13131,7 @@ export namespace Prisma {
     name?: string | null
     created_at?: Date | string | null
     update_at?: Date | string | null
+    avaliacao?: AvaliacaoCreateNestedManyWithoutOrderInput
   }
 
   export type OrderUncheckedCreateWithoutItemsInput = {
@@ -8459,6 +13142,7 @@ export namespace Prisma {
     name?: string | null
     created_at?: Date | string | null
     update_at?: Date | string | null
+    avaliacao?: AvaliacaoUncheckedCreateNestedManyWithoutOrderInput
   }
 
   export type OrderCreateOrConnectWithoutItemsInput = {
@@ -8475,6 +13159,7 @@ export namespace Prisma {
     created_at?: Date | string | null
     update_at?: Date | string | null
     category: CategoryCreateNestedOneWithoutProductsInput
+    favorito?: FavoritoCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutItemsInput = {
@@ -8486,6 +13171,7 @@ export namespace Prisma {
     created_at?: Date | string | null
     update_at?: Date | string | null
     category_id: string
+    favorito?: FavoritoUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutItemsInput = {
@@ -8512,6 +13198,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    avaliacao?: AvaliacaoUpdateManyWithoutOrderNestedInput
   }
 
   export type OrderUncheckedUpdateWithoutItemsInput = {
@@ -8522,6 +13209,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    avaliacao?: AvaliacaoUncheckedUpdateManyWithoutOrderNestedInput
   }
 
   export type ProductUpsertWithoutItemsInput = {
@@ -8544,6 +13232,7 @@ export namespace Prisma {
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
+    favorito?: FavoritoUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutItemsInput = {
@@ -8555,6 +13244,39 @@ export namespace Prisma {
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     category_id?: StringFieldUpdateOperationsInput | string
+    favorito?: FavoritoUncheckedUpdateManyWithoutProductNestedInput
+  }
+
+  export type AvaliacaoCreateManyClienteInput = {
+    id?: string
+    nota: number
+    descricao: string
+    created_at?: Date | string | null
+    order_id: string
+  }
+
+  export type AvaliacaoUpdateWithoutClienteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    order?: OrderUpdateOneRequiredWithoutAvaliacaoNestedInput
+  }
+
+  export type AvaliacaoUncheckedUpdateWithoutClienteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    order_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AvaliacaoUncheckedUpdateManyWithoutClienteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    order_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductCreateManyCategoryInput = {
@@ -8576,6 +13298,7 @@ export namespace Prisma {
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     items?: ItemUpdateManyWithoutProductNestedInput
+    favorito?: FavoritoUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutCategoryInput = {
@@ -8587,6 +13310,7 @@ export namespace Prisma {
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     items?: ItemUncheckedUpdateManyWithoutProductNestedInput
+    favorito?: FavoritoUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateManyWithoutCategoryInput = {
@@ -8605,6 +13329,12 @@ export namespace Prisma {
     created_at?: Date | string | null
     update_at?: Date | string | null
     order_id: string
+  }
+
+  export type FavoritoCreateManyProductInput = {
+    id?: string
+    created_at?: Date | string | null
+    update_at?: Date | string | null
   }
 
   export type ItemUpdateWithoutProductInput = {
@@ -8631,12 +13361,62 @@ export namespace Prisma {
     order_id?: StringFieldUpdateOperationsInput | string
   }
 
+  export type FavoritoUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FavoritoUncheckedUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FavoritoUncheckedUpdateManyWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    update_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type AvaliacaoCreateManyOrderInput = {
+    id?: string
+    nota: number
+    descricao: string
+    created_at?: Date | string | null
+    cliente_id: string
+  }
+
   export type ItemCreateManyOrderInput = {
     id?: string
     amount: number
     created_at?: Date | string | null
     update_at?: Date | string | null
     product_id: string
+  }
+
+  export type AvaliacaoUpdateWithoutOrderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cliente?: ClienteUpdateOneRequiredWithoutAvaliacaoNestedInput
+  }
+
+  export type AvaliacaoUncheckedUpdateWithoutOrderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cliente_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AvaliacaoUncheckedUpdateManyWithoutOrderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cliente_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type ItemUpdateWithoutOrderInput = {

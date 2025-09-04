@@ -1,5 +1,5 @@
 import express from "express";
-import { routerTeste } from "./rotas/teste_route";
+import { routerTeste } from "./teste_route";
 
 const app = express();
 app.use(express.json());
