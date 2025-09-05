@@ -1,4 +1,5 @@
 import express from "express";
+import 'express-async-errors';
 import 'dotenv/config'
 import { routerTeste } from "./teste_route";
 
@@ -9,5 +10,5 @@ app.use(express.json());
 app.use(routerTeste);
 
 app.listen(9000, () => {
-  console.log("🚀 Server rodando em http://localhost:9000");
+  console.log("Server rodando em http://localhost:9000");
 });

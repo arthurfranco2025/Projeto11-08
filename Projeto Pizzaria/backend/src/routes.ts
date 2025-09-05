@@ -26,6 +26,7 @@ import { isAuthenticated } from './middlewares/isAuthenticated'
 
 import { CreateClienteController } from './controllers/cliente/CreateClienteController'
 import { AuthClienteController } from './controllers/cliente/AuthClienteController'
+import { EditClienteController } from './controllers/cliente/EditClienteController'
 
 import uploadConfig from './config/multer'
 
@@ -62,5 +63,6 @@ router.put('/order/finish', isAuthenticated, new FinishOrderController().handle)
 
 router.post('/cadastro', new CreateClienteController().handle)
 router.post('/login', new AuthClienteController().handle)
+router.put("/edit", isAuthenticated, new EditClienteController().handle.bind(new EditClienteController()));
 
 export {router};
