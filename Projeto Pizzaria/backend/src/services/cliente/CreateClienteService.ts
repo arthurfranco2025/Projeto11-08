@@ -1,7 +1,8 @@
 import prismaClient from "../../prisma";
 import { hash } from "bcryptjs";
+import { cpf as cpfValidator } from 'cpf-cnpj-validator'
 
-interface ClienteRequest{
+interface ClienteRequest {
     name: string,
     email: string,
     password: string,
@@ -9,32 +10,39 @@ interface ClienteRequest{
     data_nasc: Date
 }
 
-class CreateClienteService{
-    async execute({name, email, password, cpf, data_nasc}: ClienteRequest){
-        
-        if(!email){
+class CreateClienteService {
+    async execute({ name, email, password, cpf, data_nasc }: ClienteRequest) {
+
+        if (!email) {
             throw new Error("Email incorreto")
         }
 
-        if(!cpf){
+        if (!cpf) {
             throw new Error('CPF é obrigatório')
         }
 
-        if(!password){
+
+        if (cpfValidator.isValid(cpf)) {
+            console.log("CPF válido")
+        } else {
+            throw new Error(" CPF inválido")
+        }
+
+        if (!password) {
             throw new Error('Senha é obrigatória')
         }
 
-        if(!data_nasc){
+        if (!data_nasc) {
             throw new Error('Data de Nascimento é obrigatória')
         }
 
         const clienteAlreadyExists = await prismaClient.cliente.findFirst({
             where: {
-                email : email
+                email: email
             }
         })
 
-        if(clienteAlreadyExists){
+        if (clienteAlreadyExists) {
             throw new Error("O Clliente já existe")
         }
 
@@ -45,12 +53,12 @@ class CreateClienteService{
         const cliente = await prismaClient.cliente.create({
             data: {
                 name: name,
-                email : email,
-                password : passwordHash,
+                email: email,
+                password: passwordHash,
                 cpf: cpf,
                 data_nasc: dataDefault,
             },
-            select:{
+            select: {
                 id: true,
                 name: true,
                 email: true,
@@ -62,4 +70,4 @@ class CreateClienteService{
     }
 }
 
-export {CreateClienteService}
+export { CreateClienteService }
