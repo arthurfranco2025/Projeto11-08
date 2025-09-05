@@ -25,6 +25,7 @@ import { FinishOrderController } from './controllers/order/FinishOrderController
 import { isAuthenticated } from './middlewares/isAuthenticated'
 
 import { CreateClienteController } from './controllers/cliente/CreateClienteController'
+import { AuthClienteController } from './controllers/cliente/AuthClienteController'
 
 import uploadConfig from './config/multer'
 
@@ -60,5 +61,6 @@ router.get('/order/detail', isAuthenticated, new DetailOrderController().handle)
 router.put('/order/finish', isAuthenticated, new FinishOrderController().handle)
 
 router.post('/criaCliente', new CreateClienteController().handle)
+router.post('/login', new AuthClienteController().handle)
 
 export {router};
