@@ -27,9 +27,9 @@ import { isAuthenticated } from './middlewares/isAuthenticated'
 import { CreateClienteController } from './controllers/cliente/CreateClienteController'
 import { AuthClienteController } from './controllers/cliente/AuthClienteController'
 import { EditClienteController } from './controllers/cliente/EditClienteController'
+import { ForgotPasswordClienteController } from './controllers/cliente/ForgotPasswordClienteController'
 
 import uploadConfig from './config/multer'
-
 
 const router = Router()
 
@@ -64,5 +64,6 @@ router.put('/order/finish', isAuthenticated, new FinishOrderController().handle)
 router.post('/cadastro', new CreateClienteController().handle)
 router.post('/login', new AuthClienteController().handle)
 router.put("/edit", isAuthenticated, new EditClienteController().handle.bind(new EditClienteController()));
+router.put('/esqueciMinhaSenha', new ForgotPasswordClienteController().handle.bind(new ForgotPasswordClienteController()));
 
 export {router};
