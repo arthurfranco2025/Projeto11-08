@@ -10,6 +10,6 @@ const routerTeste = Router()
 //})
 
 //routerTeste.post('/criaCliente', new CreateClienteController().handle)
-//routerTeste.post('/login', new AuthClienteController().handle)
+routerTeste.post('/login', new AuthClienteController().handle)
 
 export {routerTeste}

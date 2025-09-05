@@ -3,12 +3,13 @@ import {compare} from 'bcryptjs'
 import {sign} from 'jsonwebtoken'
 
 interface AuthRequest{
-    email: string;
+    email: string; 
+    cpf: string;
     password: string;
 }
 
 class AuthClienteService{
-    async execute({ email, password} : AuthRequest){
+    async execute({ email, cpf, password} : AuthRequest){
         
         const cliente = await prismaClient.cliente.findFirst({
             where:{
@@ -16,13 +17,29 @@ class AuthClienteService{
             }
         })
 
+        const clienteComCpf = await prismaClient.cliente.findFirst({
+            where:{
+                cpf: cpf
+            }
+        })
+
         if(!cliente){
-            throw new Error("Usuário ou senha incorretos")
+            throw new Error("Insira o usuário")
         }
 
-        if(!email){
-            throw new Error("Email é obrigatório")
+        if(!clienteComCpf){
+            throw new Error("Insira o usuário")
         }
+
+
+
+        //if(!cliente){
+        //    throw new Error("Usuário ou senha incorretos")
+        //}
+
+        //if(!email){
+        //    throw new Error("Email é obrigatório")
+        //}
 
         if(!password){
             throw new Error("Senha é obrigatório")
