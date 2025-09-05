@@ -21,9 +21,8 @@ class CreateClienteService {
             throw new Error('CPF é obrigatório')
         }
 
-
         if (cpfValidator.isValid(cpf)) {
-            console.log("CPF válido")
+            //nada
         } else {
             throw new Error(" CPF inválido")
         }
@@ -36,14 +35,27 @@ class CreateClienteService {
             throw new Error('Data de Nascimento é obrigatória')
         }
 
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            throw new Error("Email inválido");
+        }
+
+        const senhaSegura = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&#./+¨()]{8,}$/;
+        if (!senhaSegura.test(password)) {
+            throw new Error("A senha deve ter no mínimo 8 caracteres e conter pelo menos uma letra e um número.");
+        }
+
         const clienteAlreadyExists = await prismaClient.cliente.findFirst({
             where: {
                 email: email
             }
+        })  
+        const clienteAlreadyExistsCPF = await prismaClient.cliente.findFirst({
+            where: {
+                cpf: cpf
+            }
         })
-
-        if (clienteAlreadyExists) {
-            throw new Error("O Clliente já existe")
+        if (clienteAlreadyExists || clienteAlreadyExistsCPF) {
+            throw new Error("O Cliente já existe, mude seu email ou cpf")
         }
 
         const passwordHash = await hash(password, 8)
