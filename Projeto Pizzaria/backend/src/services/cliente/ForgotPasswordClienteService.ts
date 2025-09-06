@@ -1,4 +1,3 @@
-import { PrismaClient } from "@prisma/client";
 import prismaClient from "../../prisma";
 import { compare, hash } from "bcryptjs";
 
@@ -16,10 +15,17 @@ class ForgotPasswordClienteService {
             throw new Error("As senhas não são iguais");
         }
 
+        if(!password){
+            throw new Error("Digite a nova senha");
+        }
+
+        if(!confirmPassword){
+            throw new Error("Digite a confirmação de senha");
+        }
+
         const clienteExiste = await prismaClient.cliente.findFirst({
             where: {
-                email: email,
-                cpf: cpf
+                email: email
             }
         });
 
@@ -42,6 +48,11 @@ class ForgotPasswordClienteService {
         if (senhaIgual) {
             throw new Error("A nova senha não pode ser igual a senha antiga");
         }
+
+        const senhaSegura = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&#./+¨()]{8,}$/;
+        if (!senhaSegura.test(password)) {
+            throw new Error("A nova senha deve ter pelo menos 8 caracteres, incluindo letras e números.");
+        }       
 
         const cliente = await prismaClient.cliente.update({
             where: {

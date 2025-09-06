@@ -7,7 +7,7 @@ interface AuthenticatedRequest extends Request {
 
 class EditClienteController {
   async handle(req: AuthenticatedRequest, res: Response) {
-    const { novoName, novoEmail, confirmEmail, novoPassword, confirmPassword } =
+    const { novoName, novoEmail, confirmEmail, oldPassword, novoPassword, confirmPassword } =
       req.body;
 
     // Verifica se o middleware já passou o user_id
@@ -23,6 +23,7 @@ class EditClienteController {
         novoName,
         novoEmail,
         confirmEmail,
+        oldPassword,
         novoPassword,
         confirmPassword,
       });

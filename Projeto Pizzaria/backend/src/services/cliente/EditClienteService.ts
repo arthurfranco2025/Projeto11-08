@@ -1,5 +1,6 @@
+import { PrismaClient } from "@prisma/client";
 import prismaClient from "../../prisma/index";
-import { hash } from "bcryptjs";
+import { compare, hash } from "bcryptjs";
 
 const prisma = prismaClient;
 
@@ -8,6 +9,7 @@ interface EditClienteRequest {
   novoName?: string;
   novoEmail?: string;
   confirmEmail?: string;
+  oldPassword?: string;
   novoPassword?: string;
   confirmPassword?: string;
 }
@@ -18,6 +20,7 @@ class EditClienteService {
     novoName,
     novoEmail,
     confirmEmail,
+    oldPassword,
     novoPassword,
     confirmPassword,
   }: EditClienteRequest) {
@@ -29,45 +32,71 @@ class EditClienteService {
       where: { id: userId },
     });
 
-    if (!novoName && !novoEmail && !novoPassword) {
-      throw new Error("Nenhum dado para atualizar.");
-    }
     // Validações e atribuições condicionais
     if (novoName) {
+      const nomeAtual = clienteAtual?.name;
+
+      if (novoName === nomeAtual) {
+        throw new Error("O novo nome é igual ao atual.");
+      }
+
       dataToUpdate.name = novoName;
     }
 
-    if(novoName === clienteAtual?.name || novoEmail === clienteAtual?.email || novoPassword === clienteAtual?.password){
+    if (novoName === clienteAtual?.name || novoEmail === clienteAtual?.email || novoPassword === clienteAtual?.password) {
       throw new Error("Os novos dados são iguais aos atuais, caso queira manter os dados, deixe-os em branco.");
     }
 
     if (novoEmail) {
       if (novoEmail !== confirmEmail) {
-        throw new Error("Os e-mails não são os mesmos.");
+        throw new Error("O email e a confirmação de email não são os mesmos.");
       }
 
-      // Evita que o usuário mude para um e-mail que já existe, mas ignora o próprio e-mail do cliente.
       const clienteComMesmoEmail = await prismaClient.cliente.findFirst({
         where: {
-          email: novoEmail,
-          NOT: { id: userId }, // ignora o próprio usuário
+          email: novoEmail
         },
       });
 
+      if (clienteAtual.email === novoEmail) {
+        throw new Error("O novo email é igual ao atual.");
+      }
+
       if (clienteComMesmoEmail) {
         throw new Error("Já existe um cliente com esse e-mail.");
+      }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(novoEmail)) {
+        throw new Error("Email inválido");
       }
 
       dataToUpdate.email = novoEmail;
     }
 
     if (novoPassword) {
-      if (novoPassword !== confirmPassword) {
-        throw new Error("As senhas não são as mesmas.");
+      if (!oldPassword) {
+        throw new Error("A senha antiga é obrigatória para alterar a senha.");
       }
-      // Usa o hash da senha para atualizar
-      const passwordHash = await hash(novoPassword, 8);
-      dataToUpdate.password = passwordHash;
+
+      const senhaAtualCorreta = await compare(oldPassword, clienteAtual!.password);
+      if (!senhaAtualCorreta) {
+        throw new Error("A senha antiga está incorreta.");
+      }
+
+      const senhaIgual = await compare(novoPassword, clienteAtual!.password);
+      if (senhaIgual) {
+        throw new Error("A nova senha não pode ser igual à senha antiga.");
+      }
+
+      if (novoPassword !== confirmPassword) {
+        throw new Error("A nova senha e a confirmação de senha não são iguais.");
+      }
+
+      const senhaSegura = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&#./+¨()]{8,}$/;
+      if (!senhaSegura.test(novoPassword)) {
+        throw new Error("A nova senha deve ter pelo menos 8 caracteres, incluindo letras e números.");
+      }
+
     }
 
     // Atualiza o cliente usando o ID do token
@@ -82,6 +111,7 @@ class EditClienteService {
     });
 
     return clienteAtualizado;
+
   }
 }
 
