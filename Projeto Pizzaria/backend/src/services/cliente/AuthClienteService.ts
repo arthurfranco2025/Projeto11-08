@@ -1,71 +1,56 @@
 import prismaClient from "../../prisma";
-import {compare} from 'bcryptjs'
-import {sign} from 'jsonwebtoken'
+import { compare } from 'bcryptjs'
+import { sign } from 'jsonwebtoken'
 
-interface AuthRequest{
-    email: string; 
+interface AuthRequest {
+    email: string;
     cpf: string;
     password: string;
 }
 
-class AuthClienteService{
-    async execute({ email, cpf, password} : AuthRequest){
-        
-        const cliente = await prismaClient.cliente.findFirst({
-            where:{
-                email: email
-            }
-        })
+class AuthClienteService {
+    async execute({ email, cpf, password }: AuthRequest) {
 
-        const clienteComCpf = await prismaClient.cliente.findFirst({
-            where:{
+        const cliente = await prismaClient.cliente.findFirst({
+            where: {
+                email: email,
                 cpf: cpf
             }
         })
 
-        if(!cliente){
-            throw new Error("Insira o usuário")
+        if (!cliente) {
+            throw new Error("Usuário não encontrado")
         }
 
-        //pro cliente poder logar só com cpf tbm
-        if(!clienteComCpf){
-            throw new Error("Insira o usuário")
+        if (!email && !cpf) {
+            throw new Error("Insira um email ou CPF válido");
         }
 
-
-
-        //if(!cliente){
-        //    throw new Error("Usuário ou senha incorretos")
-        //}
-
-        //if(!email){
-        //    throw new Error("Email é obrigatório")
-        //}
-
-        if(!password){
+        if (!password) {
             throw new Error("Senha é obrigatório")
         }
 
         const passwordMatch = await compare(password, cliente.password)
 
-        if(!passwordMatch){
+        if (!passwordMatch) {
             throw new Error('Usuário ou senha incorretos')
         }
 
-        const token = sign (
+
+        const token = sign(
             {
-                name: cliente.name,
-                email: cliente.email
+                email: cliente.email,
+                password: cliente.password
             },
             'segredo_leticia',
             {
                 subject: cliente.id,
                 expiresIn: '30d'
-                
+
             }
         )
 
-        return{
+        return {
             id: cliente.id,
             name: cliente.name,
             email: cliente.email,
@@ -74,4 +59,4 @@ class AuthClienteService{
     }
 }
 
-export {AuthClienteService}
+export { AuthClienteService }
